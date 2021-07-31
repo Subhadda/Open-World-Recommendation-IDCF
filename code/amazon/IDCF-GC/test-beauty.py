@@ -131,3 +131,40 @@ if EXTRA:
 	model_q = IRMC_GC_Model(n_user = n_user,
 				n_item = n_item,
 				supp_users = supp_users,
+				device = device,
+				edge_sparse=edge_sparse,).to(device)
+	load_model_q(model_q, './train-beauty/')
+
+	score_label_q, ndcg_sum_q, num_q = test(model_q, test_set_que, supp_or_que='que')
+	AUC_q = auc_calc(score_label_q)
+	NDCG_q = ndcg_sum_q / num_q
+	log = 'Que Test Result AUC_q: {:.4f} NDCG_q: {:.4f}'.format(AUC_q, NDCG_q)
+	print(log)
+else:
+	model_s = GCMCModel(n_user, n_item, device, edge_sparse=edge_sparse).to(device)
+	load_model_s(model_s, './pretrain-beauty/')
+	score_label_s, ndcg_sum_s, num_s = test(model_s, test_set_supp, supp_or_que='supp')
+	AUC_s = auc_calc(score_label_s)
+	NDCG_s = ndcg_sum_s / num_s
+	log = 'Supp Test Result AUC_s: {:.4f} NDCG_s: {:.4f}'.format(AUC_s, NDCG_s)
+	print(log)
+
+	model_q = IRMC_GC_Model(n_user = n_user,
+				n_item = n_item,
+				supp_users = supp_users,
+				device = device,
+				edge_sparse=edge_sparse,).to(device)
+	load_model_q(model_q, './train-beauty/')
+
+	score_label_q, ndcg_sum_q, num_q = test(model_q, test_set_que, supp_or_que='que')
+	AUC_q = auc_calc(score_label_q)
+	NDCG_q = ndcg_sum_q / num_q
+	log = 'Que Test Result AUC_q: {:.4f} NDCG_q: {:.4f}'.format(AUC_q, NDCG_q)
+	print(log)
+
+	score_label = score_label_s + score_label_q
+	score_label = sorted(score_label, key=lambda d:d[0], reverse=True)
+	AUC = auc_calc(score_label)
+	NDCG = ( ndcg_sum_s + ndcg_sum_q )/ (num_s+num_q)
+	log = 'All Test Result AUC: {:.4f} NDCG: {:.4f}'.format(AUC, NDCG)
+	print(log)
