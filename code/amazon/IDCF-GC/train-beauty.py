@@ -155,3 +155,44 @@ def test(model, test_set):
 
 def save_model(model, path):
 	if EXTRA:
+		torch.save(model.state_dict(), path + 'model-extra.pkl')
+	else:
+		torch.save(model.state_dict(), path + 'model-inter.pkl')
+
+def load_model(model, path):
+	model.load_embedding_nn(path+'model.pkl')
+
+train_size, test_size = train_set.size(0), test_set.size(0)
+n_iter = n_epochs * train_size // BATCH_SIZE_TRAIN
+bestloss = 10.0
+
+model = IRMC_GC_Model(n_user = n_user, 
+				n_item = n_item,
+				supp_users = supp_users, 
+				device = device,
+				edge_sparse=edge_sparse,).to(device)
+load_model(model, './pretrain-beauty/')
+optimizer = torch.optim.Adam( filter(lambda p: p.requires_grad, model.parameters()), lr = LEARNING_RATE, weight_decay=5e-2)
+scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=DECAYING_FACTOR)
+start_time = datetime.now()
+for epoch in range(n_epochs):
+	train_set = train_set[torch.randperm(train_size)]
+	loss_r_sum, loss_rec_sum = 0., 0.
+	for i in range(train_size // BATCH_SIZE_TRAIN + 1):
+		loss_r, loss_rec = train(model, optimizer, i)
+		loss_r_sum += loss_r
+		loss_rec_sum += loss_rec
+	loss_r_train = loss_r_sum / train_size
+	loss_rec_train = loss_rec_sum / train_size
+	cost_time = str((datetime.now() - start_time) / (epoch+1) * (n_epochs - epoch)).split('.')[0]
+	print('Epoch {}: TrainLoss {:.4f} RecLoss: {:.4f} (left: {})'.format(epoch, loss_r_train, loss_rec_train, cost_time))
+	scheduler.step()
+
+	ValLoss, AUC_val = test(model, val_set)
+	TestLoss, AUC_te = test(model, test_set)
+
+	print('ValLoss: {:.4f} AUC: {:.4f}'.format(TestLoss, AUC_val))
+	print('TestLoss: {:.4f} AUC: {:.4f}'.format(TestLoss, AUC_te))
+	if ValLoss < bestloss:
+		bestloss = ValLoss
+		save_model(model, './train-beauty/')
