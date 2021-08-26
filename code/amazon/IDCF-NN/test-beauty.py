@@ -13,4 +13,6 @@ import torch
 import torch.nn.functional as F
 
 def fix_seed(seed):
-    ra
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_s
