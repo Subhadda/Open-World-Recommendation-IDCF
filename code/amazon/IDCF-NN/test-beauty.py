@@ -10,4 +10,7 @@ from model import IRMC_NN_Model, NNMFModel
 from utils import *
 from datetime import datetime
 import torch
-import torch.
+import torch.nn.functional as F
+
+def fix_seed(seed):
+    ra
