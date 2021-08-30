@@ -20,4 +20,5 @@ def fix_seed(seed):
     torch.backends.cudnn.deterministic = True
 fix_seed(1234)
 
-parser = argpar
+parser = argparse.ArgumentParser(description='PMF')
+parser.add_arg
