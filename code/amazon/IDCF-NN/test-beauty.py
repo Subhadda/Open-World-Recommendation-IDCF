@@ -21,4 +21,5 @@ def fix_seed(seed):
 fix_seed(1234)
 
 parser = argparse.ArgumentParser(description='PMF')
-parser.add_arg
+parser.add_argument('--gpus', default='0', help='gpus')
+parser.add_argum
