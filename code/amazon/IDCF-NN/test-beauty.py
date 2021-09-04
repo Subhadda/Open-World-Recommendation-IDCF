@@ -22,4 +22,7 @@ fix_seed(1234)
 
 parser = argparse.ArgumentParser(description='PMF')
 parser.add_argument('--gpus', default='0', help='gpus')
-parser.add_argument('--extra', action="store_true", help='whether extra or inte
+parser.add_argument('--extra', action="store_true", help='whether extra or inter')
+args = parser.parse_args()
+
+config = yaml.safe_load(ope
