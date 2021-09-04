@@ -22,4 +22,4 @@ fix_seed(1234)
 
 parser = argparse.ArgumentParser(description='PMF')
 parser.add_argument('--gpus', default='0', help='gpus')
-parser.add_argum
+parser.add_argument('--extra', action="store_true", help='whether extra or inte
