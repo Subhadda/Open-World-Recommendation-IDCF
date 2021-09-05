@@ -31,4 +31,8 @@ os.environ["CUDA_VISIBLE_DEVICES"] = args.gpus
 device = torch.device('cuda')
 
 BATCH_SIZE_TEST = 1024
-HIS
+HIS_MAXLEN = 100
+HIS_SAMPLE_NUM = 20
+EXTRA = args.extra
+
+DATASE
