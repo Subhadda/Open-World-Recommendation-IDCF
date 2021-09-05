@@ -27,4 +27,8 @@ args = parser.parse_args()
 
 config = yaml.safe_load(open("./datainfo.yaml", 'r'))
 
-os.environ["CUDA_VISIBLE_DEVICES"]
+os.environ["CUDA_VISIBLE_DEVICES"] = args.gpus
+device = torch.device('cuda')
+
+BATCH_SIZE_TEST = 1024
+HIS
