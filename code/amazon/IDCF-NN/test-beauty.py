@@ -37,3 +37,4 @@ EXTRA = args.extra
 
 DATASET = 'amazon-beauty'
 datadir = '../../../data/beauty_s20.pkl'
+train_set_supp, train_set_que, test_set_supp, test_set_qu
