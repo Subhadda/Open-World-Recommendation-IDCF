@@ -35,4 +35,5 @@ HIS_MAXLEN = 100
 HIS_SAMPLE_NUM = 20
 EXTRA = args.extra
 
-DATASE
+DATASET = 'amazon-beauty'
+datadir = '../../../data/beauty_s20.pkl'
