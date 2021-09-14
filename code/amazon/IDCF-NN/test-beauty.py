@@ -43,4 +43,5 @@ n_user = config[DATASET]['n_user']
 n_item = config[DATASET]['n_item']
 
 test_set_supp = torch.tensor(test_set_supp)
-t
+test_set_que = torch.tensor(test_set_que)
+supp_users
