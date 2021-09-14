@@ -40,4 +40,7 @@ datadir = '../../../data/beauty_s20.pkl'
 train_set_supp, train_set_que, test_set_supp, test_set_que, user_his_dic, user_supp_list = generate_data(datadir=datadir)
 config = yaml.safe_load(open("./datainfo.yaml", 'r'))
 n_user = config[DATASET]['n_user']
-n_item = config[DAT
+n_item = config[DATASET]['n_item']
+
+test_set_supp = torch.tensor(test_set_supp)
+t
