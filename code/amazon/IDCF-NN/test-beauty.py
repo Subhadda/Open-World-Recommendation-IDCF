@@ -47,4 +47,7 @@ test_set_que = torch.tensor(test_set_que)
 supp_users = torch.tensor(user_supp_list, dtype = torch.long)
 
 user_supp_num = len(user_supp_list)
-user_que_num = n_u
+user_que_num = n_user - user_supp_num
+
+def sequence_adjust(seq):
+	seq_new 
