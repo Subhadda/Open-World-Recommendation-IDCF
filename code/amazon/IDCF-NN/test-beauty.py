@@ -50,4 +50,6 @@ user_supp_num = len(user_supp_list)
 user_que_num = n_user - user_supp_num
 
 def sequence_adjust(seq):
-	seq_new 
+	seq_new = seq
+	if len(seq) <= 0:
+		seq_new = [np.random.randint(0, n_item) for 
