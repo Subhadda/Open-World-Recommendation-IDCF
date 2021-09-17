@@ -54,4 +54,8 @@ def sequence_adjust(seq):
 	if len(seq) <= 0:
 		seq_new = [np.random.randint(0, n_item) for i in range(HIS_SAMPLE_NUM)]
 	if len(seq) > HIS_MAXLEN:
-		ra
+		random.shuffle(seq)
+		seq_new = seq[:HIS_MAXLEN]
+	return seq_new
+
+def 
