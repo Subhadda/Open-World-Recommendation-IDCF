@@ -58,4 +58,5 @@ def sequence_adjust(seq):
 		seq_new = seq[:HIS_MAXLEN]
 	return seq_new
 
-def 
+def neg_sampling(train_set_i, num_neg_per = 5):
+	size = train_set_i.size(0)
