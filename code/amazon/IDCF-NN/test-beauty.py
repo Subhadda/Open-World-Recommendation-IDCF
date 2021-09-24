@@ -61,4 +61,7 @@ def sequence_adjust(seq):
 def neg_sampling(train_set_i, num_neg_per = 5):
 	size = train_set_i.size(0)
 	neg_iid = torch.randint(0, n_item, (num_neg_per * size, )).reshape(-1)
-	return torch.stack([train_set_i[:, 0].repeat(num_neg_per), neg_iid, torch.zeros(num_neg_per * s
+	return torch.stack([train_set_i[:, 0].repeat(num_neg_per), neg_iid, torch.zeros(num_neg_per * size)], dim=1)
+
+def test(model, test_set, supp_or_que):
+	model.eval()
