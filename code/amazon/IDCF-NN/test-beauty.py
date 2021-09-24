@@ -65,3 +65,5 @@ def neg_sampling(train_set_i, num_neg_per = 5):
 
 def test(model, test_set, supp_or_que):
 	model.eval()
+	test_size = test_set.size(0)
+	user_score_dict, user_label_dict 
