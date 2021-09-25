@@ -73,4 +73,4 @@ def test(model, test_set, supp_or_que):
 	score_label = []
 	for i in range(test_size // BATCH_SIZE_TEST + 1):
 		with torch.no_grad():
-	
+			test_set_i = test_set[i*BATCH_SIZE_TEST : (i+1)*B
