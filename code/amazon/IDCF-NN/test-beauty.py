@@ -71,4 +71,6 @@ def test(model, test_set, supp_or_que):
 		user_score_dict[k] = []
 		user_label_dict[k] = []
 	score_label = []
-	for i in range(test_si
+	for i in range(test_size // BATCH_SIZE_TEST + 1):
+		with torch.no_grad():
+	
