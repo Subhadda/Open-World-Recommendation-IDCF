@@ -75,4 +75,5 @@ def test(model, test_set, supp_or_que):
 		with torch.no_grad():
 			test_set_i = test_set[i*BATCH_SIZE_TEST : (i+1)*BATCH_SIZE_TEST]
 			test_set_neg_i = neg_sampling(test_set_i)
-			t
+			test_set_i = torch.cat([test_set_i, test_set_neg_i], dim=0)
+			test_set_i_x = test
