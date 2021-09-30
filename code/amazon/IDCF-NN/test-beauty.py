@@ -73,4 +73,6 @@ def test(model, test_set, supp_or_que):
 	score_label = []
 	for i in range(test_size // BATCH_SIZE_TEST + 1):
 		with torch.no_grad():
-			test_set_i = test_set[i*BATCH_SIZE_TEST : (i+1)*B
+			test_set_i = test_set[i*BATCH_SIZE_TEST : (i+1)*BATCH_SIZE_TEST]
+			test_set_neg_i = neg_sampling(test_set_i)
+			t
