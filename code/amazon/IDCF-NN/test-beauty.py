@@ -77,4 +77,6 @@ def test(model, test_set, supp_or_que):
 			test_set_neg_i = neg_sampling(test_set_i)
 			test_set_i = torch.cat([test_set_i, test_set_neg_i], dim=0)
 			test_set_i_x = test_set_i[:, :2].long().to(device)
-			test_set_i_y = test_set_i[:, 2].float(
+			test_set_i_y = test_set_i[:, 2].float().to(device)
+			test_set_his_i = [torch.tensor(
+				sequence_adjus
