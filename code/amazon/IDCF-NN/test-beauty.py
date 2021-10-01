@@ -80,4 +80,5 @@ def test(model, test_set, supp_or_que):
 			test_set_i_y = test_set_i[:, 2].float().to(device)
 			test_set_his_i = [torch.tensor(
 				sequence_adjust( user_his_dic[test_set_i[k][0].item()] ),
-				dtype = torch
+				dtype = torch.long
+				)   for k in range(test_set_i.size(0))
