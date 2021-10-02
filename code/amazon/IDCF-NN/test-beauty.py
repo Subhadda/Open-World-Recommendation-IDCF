@@ -81,4 +81,5 @@ def test(model, test_set, supp_or_que):
 			test_set_his_i = [torch.tensor(
 				sequence_adjust( user_his_dic[test_set_i[k][0].item()] ),
 				dtype = torch.long
-				)   for k in range(test_set_i.size(0))
+				)   for k in range(test_set_i.size(0))]
+			test_set_hl_i = [test_set_his_i[k].size(0) for k in range(
