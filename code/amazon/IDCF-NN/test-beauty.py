@@ -83,4 +83,4 @@ def test(model, test_set, supp_or_que):
 				dtype = torch.long
 				)   for k in range(test_set_i.size(0))]
 			test_set_hl_i = [test_set_his_i[k].size(0) for k in range(test_set_i.size(0))]
-			test_set_his_i = torch.nn.utils
+			test_set_his_i = torch.nn.utils.rnn.pad_sequence(test_set_his_i, batch_first = True, padding_value =
