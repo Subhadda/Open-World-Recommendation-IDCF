@@ -86,4 +86,7 @@ def test(model, test_set, supp_or_que):
 			test_set_his_i = torch.nn.utils.rnn.pad_sequence(test_set_his_i, batch_first = True, padding_value = 0.).to(device)
 			test_set_hl_i = torch.tensor(test_set_hl_i, dtype=torch.long).to(device)
 
-			if supp_or_que == 'supp
+			if supp_or_que == 'supp':
+				pred_y = model(test_set_i_x)
+			else:
+				pred_y
