@@ -89,4 +89,5 @@ def test(model, test_set, supp_or_que):
 			if supp_or_que == 'supp':
 				pred_y = model(test_set_i_x)
 			else:
-				pred_y
+				pred_y = model(test_set_i_x, test_set_his_i, test_set_hl_i)
+		y_hat
