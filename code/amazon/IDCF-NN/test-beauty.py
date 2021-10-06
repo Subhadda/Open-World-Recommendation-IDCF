@@ -90,4 +90,4 @@ def test(model, test_set, supp_or_que):
 				pred_y = model(test_set_i_x)
 			else:
 				pred_y = model(test_set_i_x, test_set_his_i, test_set_hl_i)
-		y_hat
+		y_hat, y = pred_y.cpu().numpy().tolist(), test_set_i_y.cpu().num
