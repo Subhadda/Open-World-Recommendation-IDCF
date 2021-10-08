@@ -94,4 +94,6 @@ def test(model, test_set, supp_or_que):
 		for i in range(len(y)):
 			score_label.append([y_hat[i], y[i]])
 		for k in range(test_set_i.size(0)):
-			u, s, y = test_set_i_x[k, 0].item(), pred_y[k].item(), test_
+			u, s, y = test_set_i_x[k, 0].item(), pred_y[k].item(), test_set_i_y[k].item()
+			user_score_dict[u] += [s]
+			user_label_dict[u
