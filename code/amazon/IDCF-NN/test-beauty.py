@@ -99,4 +99,7 @@ def test(model, test_set, supp_or_que):
 			user_label_dict[u] += [y]
 	score_label = sorted(score_label, key=lambda d:d[0], reverse=True)
 	ndcg_sum, num = 0., 0
-	for k in user_score_dict.keys()
+	for k in user_score_dict.keys():
+		if len(user_score_dict[k]) <= 1:
+			continue
+		ndcg_sum 
