@@ -104,4 +104,7 @@ def test(model, test_set, supp_or_que):
 			continue
 		ndcg_sum += ndcg_k(user_score_dict[k], user_label_dict[k], len(user_score_dict[k]))
 		num += 1
-	return score_label, n
+	return score_label, ndcg_sum, num
+
+def load_model_s(model, path):
+	model.load_model(path
