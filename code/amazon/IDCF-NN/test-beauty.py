@@ -113,4 +113,8 @@ def load_model_q(model, path):
 	if EXTRA:
 		model.load_model(path + 'model-extra.pkl')
 	else:
-		model.lo
+		model.load_model(path+'model-inter.pkl')
+
+
+if EXTRA:
+	model_q = IRMC_NN_Model(n_u
