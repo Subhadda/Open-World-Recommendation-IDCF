@@ -117,4 +117,7 @@ def load_model_q(model, path):
 
 
 if EXTRA:
-	model_q = IRMC_NN_Model(n_u
+	model_q = IRMC_NN_Model(n_user=n_user,
+							n_item=n_item,
+							supp_users=supp_users,
+							de
