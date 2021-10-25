@@ -120,4 +120,5 @@ if EXTRA:
 	model_q = IRMC_NN_Model(n_user=n_user,
 							n_item=n_item,
 							supp_users=supp_users,
-							de
+							device=device).to(device)
+	load_model_q(model_q, './train-beauty/')
