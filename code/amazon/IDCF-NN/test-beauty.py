@@ -122,3 +122,5 @@ if EXTRA:
 							supp_users=supp_users,
 							device=device).to(device)
 	load_model_q(model_q, './train-beauty/')
+
+	score_label_q, ndcg_sum_q, num_q = test(model_q, test_se
