@@ -127,4 +127,7 @@ if EXTRA:
 	AUC_q = auc_calc(score_label_q)
 	NDCG_q = ndcg_sum_q / num_q
 	log = 'Que Test Result AUC_q: {:.4f} NDCG_q: {:.4f}'.format(AUC_q, NDCG_q)
-	print(lo
+	print(log)
+else:
+	model_s = NNMFModel(n_user, n_item).to(device)
+	load_m
