@@ -130,4 +130,5 @@ if EXTRA:
 	print(log)
 else:
 	model_s = NNMFModel(n_user, n_item).to(device)
-	load_m
+	load_model_s(model_s, './pretrain-beauty/')
+	score_label_s, ndcg_sum_s, num_s = test(mode
