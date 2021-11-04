@@ -134,4 +134,7 @@ else:
 	score_label_s, ndcg_sum_s, num_s = test(model_s, test_set_supp, supp_or_que='supp')
 	AUC_s = auc_calc(score_label_s)
 	NDCG_s = ndcg_sum_s / num_s
-	log = 'Key Test Result AU
+	log = 'Key Test Result AUC_s: {:.4f} NDCG_s: {:.4f}'.format(AUC_s, NDCG_s)
+	print(log)
+
+	model_q = IRMC_
