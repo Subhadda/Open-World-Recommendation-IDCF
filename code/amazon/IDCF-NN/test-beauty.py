@@ -131,4 +131,5 @@ if EXTRA:
 else:
 	model_s = NNMFModel(n_user, n_item).to(device)
 	load_model_s(model_s, './pretrain-beauty/')
-	score_label_s, ndcg_sum_s, num_s = test(mode
+	score_label_s, ndcg_sum_s, num_s = test(model_s, test_set_supp, supp_or_que='supp')
+	AUC_s = auc_calc(score_la
