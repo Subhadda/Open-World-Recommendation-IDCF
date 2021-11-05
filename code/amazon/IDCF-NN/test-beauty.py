@@ -137,4 +137,6 @@ else:
 	log = 'Key Test Result AUC_s: {:.4f} NDCG_s: {:.4f}'.format(AUC_s, NDCG_s)
 	print(log)
 
-	model_q = IRMC_
+	model_q = IRMC_NN_Model(n_user = n_user,
+					n_item = n_item,
+					supp_users = supp_
