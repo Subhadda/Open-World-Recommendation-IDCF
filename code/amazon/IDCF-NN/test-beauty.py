@@ -141,4 +141,6 @@ else:
 					n_item = n_item,
 					supp_users = supp_users,
 					device = device).to(device)
-	load_model_q(mo
+	load_model_q(model_q, './train-beauty/')
+
+	score_label_q, ndcg_sum_q, num_q = te
