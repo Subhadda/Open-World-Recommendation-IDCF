@@ -143,4 +143,5 @@ else:
 					device = device).to(device)
 	load_model_q(model_q, './train-beauty/')
 
-	score_label_q, ndcg_sum_q, num_q = te
+	score_label_q, ndcg_sum_q, num_q = test(model_q, test_set_que, supp_or_que='que')
+	AUC_q = auc_cal
