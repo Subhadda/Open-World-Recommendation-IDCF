@@ -139,4 +139,6 @@ else:
 
 	model_q = IRMC_NN_Model(n_user = n_user,
 					n_item = n_item,
-					supp_users = supp_
+					supp_users = supp_users,
+					device = device).to(device)
+	load_model_q(mo
