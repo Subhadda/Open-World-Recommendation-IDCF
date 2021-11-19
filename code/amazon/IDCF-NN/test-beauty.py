@@ -150,4 +150,5 @@ else:
 	print(log)
 
 	score_label = score_label_s + score_label_q
-	score_label = sorted
+	score_label = sorted(score_label, key=lambda d:d[0], reverse=True)
+	AUC 
