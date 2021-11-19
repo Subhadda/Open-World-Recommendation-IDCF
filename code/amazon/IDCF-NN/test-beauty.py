@@ -149,4 +149,5 @@ else:
 	log = 'Que Test Result AUC_q: {:.4f} NDCG_q: {:.4f}'.format(AUC_q, NDCG_q)
 	print(log)
 
-	
+	score_label = score_label_s + score_label_q
+	score_label = sorted
