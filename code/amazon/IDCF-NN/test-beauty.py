@@ -146,4 +146,7 @@ else:
 	score_label_q, ndcg_sum_q, num_q = test(model_q, test_set_que, supp_or_que='que')
 	AUC_q = auc_calc(score_label_q)
 	NDCG_q = ndcg_sum_q / num_q
-	log = 'Que Test Resul
+	log = 'Que Test Result AUC_q: {:.4f} NDCG_q: {:.4f}'.format(AUC_q, NDCG_q)
+	print(log)
+
+	
