@@ -151,4 +151,5 @@ else:
 
 	score_label = score_label_s + score_label_q
 	score_label = sorted(score_label, key=lambda d:d[0], reverse=True)
-	AUC 
+	AUC = auc_calc(score_label)
+	NDCG = ( ndcg_sum_s + ndcg_sum_q )/ (num_s+nu
