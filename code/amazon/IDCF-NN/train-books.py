@@ -173,3 +173,32 @@ for epoch in range(n_epochs):
 				cost_time = str((datetime.now() - start_time) / (epoch + 1) * (n_epochs - epoch)).split('.')[0]
 				print(
 					'Epoch {}: TrainLoss {:.4f} RecLoss: {:.4f} (left: {})'.format(epoch, loss_r_train, loss_rec_train,
+																				   cost_time))
+				scheduler.step()
+
+				ValLoss, AUC_val = test(model, val_set)
+				TestLoss, AUC_te = test(model, test_set)
+				loss_r_sum, loss_rec_sum = 0., 0.
+
+				print('ValLoss: {:.4f} AUC: {:.4f}'.format(TestLoss, AUC_val))
+				print('TestLoss: {:.4f} AUC: {:.4f}'.format(TestLoss, AUC_te))
+				if ValLoss < bestloss:
+					bestloss = ValLoss
+					save_model(model, './train-books/')
+
+	if ~EXTRA:
+		loss_r_train = loss_r_sum / train_size
+		loss_rec_train = loss_rec_sum / train_size
+		cost_time = str((datetime.now() - start_time) / (epoch+1) * (n_epochs - epoch)).split('.')[0]
+		print('Epoch {}: TrainLoss {:.4f} RecLoss: {:.4f} (left: {})'.format(epoch, loss_r_train, loss_rec_train, cost_time))
+		scheduler.step()
+
+		ValLoss, AUC_val = test(model, val_set)
+		TestLoss, AUC_te = test(model, test_set)
+		loss_r_sum, loss_rec_sum = 0., 0.
+
+		print('ValLoss: {:.4f} AUC: {:.4f}'.format(TestLoss, AUC_val))
+		print('TestLoss: {:.4f} AUC: {:.4f}'.format(TestLoss, AUC_te))
+		if ValLoss < bestloss:
+			bestloss = ValLoss
+			save_model(model, './train-books/')
