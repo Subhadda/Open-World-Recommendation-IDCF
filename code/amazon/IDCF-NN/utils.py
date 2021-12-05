@@ -1,2 +1,7 @@
 import pickle
-import rand
+import random
+import yaml
+import numpy as np
+
+random.seed(1234)
+np.rand
