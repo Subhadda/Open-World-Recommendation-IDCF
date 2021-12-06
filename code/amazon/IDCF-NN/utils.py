@@ -4,4 +4,9 @@ import yaml
 import numpy as np
 
 random.seed(1234)
-np.rand
+np.random.seed(1234)
+
+def generate_data(datadir):
+
+    try:
+        with ope
