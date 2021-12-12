@@ -9,4 +9,5 @@ np.random.seed(1234)
 def generate_data(datadir):
 
     try:
-        with ope
+        with open(datadir, 'rb') as f:
+            ucs_set = 
