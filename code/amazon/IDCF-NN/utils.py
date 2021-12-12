@@ -10,4 +10,5 @@ def generate_data(datadir):
 
     try:
         with open(datadir, 'rb') as f:
-            ucs_set = 
+            ucs_set = pickle.load(f)
+            cs_set = pickle.load(f
