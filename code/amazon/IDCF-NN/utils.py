@@ -16,4 +16,6 @@ def generate_data(datadir):
             i_his_list = pickle.load(f)
             ucs_count, cs_count, item_count = pickle.load(f)
     except:
-        with open(d
+        with open(datadir, 'rb') as f:
+            ucs_set = pickle.load(f)
+       
