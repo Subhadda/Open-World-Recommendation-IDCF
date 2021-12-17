@@ -18,4 +18,5 @@ def generate_data(datadir):
     except:
         with open(datadir, 'rb') as f:
             ucs_set = pickle.load(f)
-       
+            cs_set = pickle.load(f)
+            ucs_count, cs_coun
