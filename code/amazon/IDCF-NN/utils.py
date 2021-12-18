@@ -19,4 +19,6 @@ def generate_data(datadir):
         with open(datadir, 'rb') as f:
             ucs_set = pickle.load(f)
             cs_set = pickle.load(f)
-            ucs_count, cs_coun
+            ucs_count, cs_count, item_count = pickle.load(f)
+
+    user_supp_num, u
