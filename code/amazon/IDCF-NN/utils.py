@@ -23,4 +23,8 @@ def generate_data(datadir):
 
     user_supp_num, user_que_num = ucs_count, cs_count
     train_set_supp, test_set_supp = [], []
-    train_set_que, test_set_que = [
+    train_set_que, test_set_que = [], []
+
+    user_supp_list = [u for u in range(ucs_count)]
+
+    d
