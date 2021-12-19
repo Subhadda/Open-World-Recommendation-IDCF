@@ -22,4 +22,5 @@ def generate_data(datadir):
             ucs_count, cs_count, item_count = pickle.load(f)
 
     user_supp_num, user_que_num = ucs_count, cs_count
-    train_set_su
+    train_set_supp, test_set_supp = [], []
+    train_set_que, test_set_que = [
