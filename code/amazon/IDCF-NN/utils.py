@@ -28,4 +28,7 @@ def generate_data(datadir):
     user_supp_list = [u for u in range(ucs_count)]
 
     def neg_sampling(int_list, neg_num = 1):
-        num = len
+        num = len(int_list)
+        neg_list = []
+        for i in range(num):
+       
