@@ -31,4 +31,5 @@ def generate_data(datadir):
         num = len(int_list)
         neg_list = []
         for i in range(num):
-            neg_list += [[np.random.randint(0, ucs_count), np
+            neg_list += [[np.random.randint(0, ucs_count), np.random.randint(0, item_count), 0] for _ in range(neg_num)]
+   
