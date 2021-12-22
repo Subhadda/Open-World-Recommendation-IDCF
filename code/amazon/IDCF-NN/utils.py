@@ -32,4 +32,7 @@ def generate_data(datadir):
         neg_list = []
         for i in range(num):
             neg_list += [[np.random.randint(0, ucs_count), np.random.randint(0, item_count), 0] for _ in range(neg_num)]
-   
+        return neg_list
+
+    for u in range(len(ucs_set)):
+    
