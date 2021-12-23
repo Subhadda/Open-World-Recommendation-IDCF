@@ -35,4 +35,5 @@ def generate_data(datadir):
         return neg_list
 
     for u in range(len(ucs_set)):
-    
+        train_set_supp += ucs_set[u][:-10]
+        #train_set_su
