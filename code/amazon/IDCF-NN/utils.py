@@ -36,4 +36,5 @@ def generate_data(datadir):
 
     for u in range(len(ucs_set)):
         train_set_supp += ucs_set[u][:-10]
-        #train_set_su
+        #train_set_supp += neg_sampling(ucs_set[u][:-10])
+        test_set_supp += u
