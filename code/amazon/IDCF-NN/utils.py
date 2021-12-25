@@ -44,4 +44,5 @@ def generate_data(datadir):
         train_set_que += cs_set[u][:-10]
         #train_set_que += neg_sampling(cs_set[u][:-10])
         test_set_que += cs_set[u][-10:]
-   
+        #test_set_que += neg_sampling(cs_set[u][-10:])
+        
