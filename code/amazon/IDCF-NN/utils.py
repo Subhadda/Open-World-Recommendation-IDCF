@@ -46,3 +46,5 @@ def generate_data(datadir):
         test_set_que += cs_set[u][-10:]
         #test_set_que += neg_sampling(cs_set[u][-10:])
         
+    user_his_dic = {}
+    for u in range(ucs_count)
