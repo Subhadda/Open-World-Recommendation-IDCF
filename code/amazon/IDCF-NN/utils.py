@@ -47,4 +47,6 @@ def generate_data(datadir):
         #test_set_que += neg_sampling(cs_set[u][-10:])
         
     user_his_dic = {}
-    for u in range(ucs_count)
+    for u in range(ucs_count):
+        tmp = ucs_set[u][:-10]
+        user_his_dic[u] = [ 
