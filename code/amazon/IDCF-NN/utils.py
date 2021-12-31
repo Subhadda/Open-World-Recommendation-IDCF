@@ -54,4 +54,5 @@ def generate_data(datadir):
         tmp = cs_set[u][:-10]
         user_his_dic[u+ucs_count] = [ tmp[k][1] for k in range(len(tmp))]
 
-    print
+    print("-------Dataset Info--------")
+    print("suppor
