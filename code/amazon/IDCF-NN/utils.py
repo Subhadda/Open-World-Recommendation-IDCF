@@ -51,4 +51,5 @@ def generate_data(datadir):
         tmp = ucs_set[u][:-10]
         user_his_dic[u] = [ tmp[k][1] for k in range(len(tmp))]
     for u in range(0, cs_count):
- 
+        tmp = cs_set[u][:-10]
+        user_his_dic[u+ucs_c
