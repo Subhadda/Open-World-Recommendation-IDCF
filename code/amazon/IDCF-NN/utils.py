@@ -55,4 +55,5 @@ def generate_data(datadir):
         user_his_dic[u+ucs_count] = [ tmp[k][1] for k in range(len(tmp))]
 
     print("-------Dataset Info--------")
-    print("support user {}, query user {}".format(user_supp_num, user_que
+    print("support user {}, query user {}".format(user_supp_num, user_que_num))
+    print("train set size: support/query {}/{}".format(l
