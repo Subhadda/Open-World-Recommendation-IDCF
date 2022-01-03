@@ -56,4 +56,5 @@ def generate_data(datadir):
 
     print("-------Dataset Info--------")
     print("support user {}, query user {}".format(user_supp_num, user_que_num))
-    print("train set size: support/query {}/{}".format(l
+    print("train set size: support/query {}/{}".format(len(train_set_supp), len(train_set_que)))
+    print
