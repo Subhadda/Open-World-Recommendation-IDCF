@@ -59,4 +59,6 @@ def generate_data(datadir):
     print("train set size: support/query {}/{}".format(len(train_set_supp), len(train_set_que)))
     print("test set size: support/query {}/{}".format(len(test_set_supp), len(test_set_que)))
 
-    #print(user_neighbor_dic[0]
+    #print(user_neighbor_dic[0], user_neighbor_dic[1000])
+
+    return train_set_supp, tra
