@@ -61,4 +61,7 @@ def generate_data(datadir):
 
     #print(user_neighbor_dic[0], user_neighbor_dic[1000])
 
-    return train_set_supp, train_set_que, test_set_supp, test_set_que, user_hi
+    return train_set_supp, train_set_que, test_set_supp, test_set_que, user_his_dic, user_supp_list
+
+def auc_calc(score_label):
+    fp1, tp
