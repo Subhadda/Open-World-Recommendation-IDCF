@@ -61,4 +61,4 @@ def generate_data(datadir):
 
     #print(user_neighbor_dic[0], user_neighbor_dic[1000])
 
-    return train_set_supp, tra
+    return train_set_supp, train_set_que, test_set_supp, test_set_que, user_hi
