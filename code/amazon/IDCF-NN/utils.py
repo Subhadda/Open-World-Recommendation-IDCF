@@ -64,4 +64,5 @@ def generate_data(datadir):
     return train_set_supp, train_set_que, test_set_supp, test_set_que, user_his_dic, user_supp_list
 
 def auc_calc(score_label):
-    fp1, tp
+    fp1, tp1, fp2, tp2, auc = 0.0, 0.0, 0.0, 0.0, 0.0
+    for s in sc
