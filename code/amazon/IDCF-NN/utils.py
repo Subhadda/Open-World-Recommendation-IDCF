@@ -67,4 +67,6 @@ def auc_calc(score_label):
     fp1, tp1, fp2, tp2, auc = 0.0, 0.0, 0.0, 0.0, 0.0
     for s in score_label:
         fp2 += (1-s[1]) # noclick
-        tp2 += s[1] # cl
+        tp2 += s[1] # click
+        auc += (tp2 - tp1) * (fp2 + fp1) / 2
+        fp1, 
