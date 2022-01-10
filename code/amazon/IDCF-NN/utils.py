@@ -69,4 +69,7 @@ def auc_calc(score_label):
         fp2 += (1-s[1]) # noclick
         tp2 += s[1] # click
         auc += (tp2 - tp1) * (fp2 + fp1) / 2
-        fp1, 
+        fp1, tp1 = fp2, tp2
+    try:
+        return 1 - auc / (tp2 * fp2)
+    except
