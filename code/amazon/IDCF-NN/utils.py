@@ -76,4 +76,7 @@ def auc_calc(score_label):
         return 0.5
 
 def recall_calc(score_label):
-	num, num_tp = 0
+	num, num_tp = 0, 0
+	for s in score_label:
+		if s[1] == 1:
+			num += 1
