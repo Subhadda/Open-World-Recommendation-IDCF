@@ -72,4 +72,8 @@ def auc_calc(score_label):
         fp1, tp1 = fp2, tp2
     try:
         return 1 - auc / (tp2 * fp2)
-    except
+    except:
+        return 0.5
+
+def recall_calc(score_label):
+	num, num_tp = 0
