@@ -80,3 +80,6 @@ def recall_calc(score_label):
 	for s in score_label:
 		if s[1] == 1:
 			num += 1
+			if s[0] >= 0.5:
+				num_tp += 1
+	return num_tp
