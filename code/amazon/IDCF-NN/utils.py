@@ -86,4 +86,7 @@ def recall_calc(score_label):
 
 def precision_calc(score_label):
 	num, num_tp = 0, 0
-	fo
+	for s in score_label:
+		if s[0] >= 0.5:
+			num += 1
+		
