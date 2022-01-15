@@ -82,4 +82,8 @@ def recall_calc(score_label):
 			num += 1
 			if s[0] >= 0.5:
 				num_tp += 1
-	return num_tp
+	return num_tp / num
+
+def precision_calc(score_label):
+	num, num_tp = 0, 0
+	fo
