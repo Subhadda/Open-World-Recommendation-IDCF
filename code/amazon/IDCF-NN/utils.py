@@ -95,4 +95,6 @@ def precision_calc(score_label):
 
 def dcg_k(score_label, k):
     dcg, i = 0., 0
-    for s in score_lab
+    for s in score_label:
+        if i < k:
+            dcg += (2**s[1]-1
