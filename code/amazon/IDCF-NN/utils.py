@@ -89,4 +89,8 @@ def precision_calc(score_label):
 	for s in score_label:
 		if s[0] >= 0.5:
 			num += 1
-		
+			if s[1] == 1:
+				num_tp += 1
+	return num_tp / num
+
+def dcg_k(score_
