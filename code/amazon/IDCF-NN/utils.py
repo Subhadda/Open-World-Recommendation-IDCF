@@ -108,4 +108,6 @@ def ndcg_k(y_hat, y, k):
     norm, i = 0., 0
     for s in score_label_:
         if i < k:
-            norm += (2
+            norm += (2**s[1]-1) / np.log2(2+i)
+            i += 1
+    dcg = dcg_
