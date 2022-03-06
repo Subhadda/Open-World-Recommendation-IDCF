@@ -92,3 +92,56 @@ def test(model, test_set):
 		with torch.no_grad():
 			test_set_i = test_set[i*BATCH_SIZE_TEST : (i+1)*BATCH_SIZE_TEST]
 			test_set_i_x = test_set_i[:, :2].long().to(device)
+			test_set_i_y = test_set_i[:, 2].long().to(device)
+			edge_UI_i = [edge_UI[n][test_set_i_x[:, 0]].to(device) for n in range(n_rating)]
+			edge_IU_i = [edge_IU[n][test_set_i_x[:, 1]].to(device) for n in range(n_rating)]
+
+			pred_y = model(test_set_i_x, edge_UI_i, edge_IU_i)
+			loss_r = torch.sum((test_set_i_y - pred_y) ** 2)
+		y_hat, y = pred_y.cpu().numpy(), test_set_i_y.cpu().numpy()
+		loss_r_test_sum += loss_r.item()
+		l1_sum += np.sum( np.abs(y_hat - y) )
+		l2_sum += np.sum( np.square(y_hat - y) )
+		for k in range(test_set_i_x.size(0)):
+			u, s, y = test_set_i_x[k, 0].item(), pred_y[k].item(), test_set_i_y[k].item()
+			user_score_dict[u] += [s]
+			user_label_dict[u] += [y]
+	TestLoss = loss_r_test_sum / test_size
+	MAE = l1_sum / test_size
+	RMSE = np.sqrt( l2_sum / test_size )
+	ndcg_sum, num = 0., 0
+	for k in user_score_dict.keys():
+		if len(user_score_dict[k]) <= 1:
+			continue
+		ndcg_sum += ndcg_k(user_score_dict[k], user_label_dict[k], len(user_score_dict[k]))
+		num += 1
+	return TestLoss, MAE, RMSE, ndcg_sum, num
+
+def load_model(model, path):
+	model.load_model(path+'model.pkl')
+
+model = GCMCModel(n_user = n_user, 
+				n_item = n_item, 
+				n_rating = n_rating, 
+				embedding_size=32, 
+				hidden_size=32,
+				device = device).to(device)
+load_model(model, path='./train-100k/')
+
+
+loss_r_test, MAE_s, RMSE_s, ndcg_sum_s, num_s = test(model, test_set_supp)
+NDCG_s = ndcg_sum_s / num_s
+log = 'Key Test Result: MAE: {:.4f} RMSE: {:.4f} NDCG: {:.4f}'.format(MAE_s, RMSE_s, NDCG_s)
+print(log)
+
+loss_r_test, MAE_q, RMSE_q, ndcg_sum_q, num_q = test(model, test_set_que)
+NDCG_q = ndcg_sum_q / num_q
+log = 'Que Test Result: MAE: {:.4f} RMSE: {:.4f} NDCG: {:.4f}'.format(MAE_q, RMSE_q, NDCG_q)
+print(log)
+
+supp_size, que_size = test_set_supp.size(0), test_set_que.size(0)
+MAE = ( MAE_s * supp_size + MAE_q * que_size )/ (supp_size+que_size)
+RMSE = np.sqrt( (RMSE_s**2 * supp_size + RMSE_q**2 * que_size) / (supp_size+que_size))
+NDCG = (ndcg_sum_q + ndcg_sum_s) / (num_q + num_s)
+log = 'All Test Result: MAE: {:.4f} RMSE: {:.4f} NDCG: {:.4f}'.format(MAE, RMSE, NDCG)
+print(log)
