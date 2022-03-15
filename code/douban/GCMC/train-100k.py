@@ -106,3 +106,46 @@ def test(model, test_set):
 		l1_sum += np.sum( np.abs(y_hat - y) )
 		l2_sum += np.sum( np.square(y_hat - y) )
 	TestLoss = loss_r_test_sum / test_size
+	MAE = l1_sum / test_size
+	RMSE = np.sqrt( l2_sum / test_size )
+
+	return TestLoss, MAE, RMSE
+
+def save_model(model, path):
+	torch.save(model.state_dict(), path+'model.pkl')
+
+start_time = datetime.now()
+train_size, val_size, test_size = train_set.size(0), val_set.size(0), test_set.size(0)
+n_iter = n_epochs * train_size // BATCH_SIZE_TRAIN
+bestRMSE = 10.0
+step = 0
+
+model = GCMCModel(n_user = n_user, 
+				n_item = n_item, 
+				n_rating = n_rating, 
+				device = device).to(device)
+optimizer = torch.optim.Adam(model.parameters(), lr = LEARNING_RATE, weight_decay=5e-2)
+scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=DECAYING_FACTOR)
+for epoch in range(n_epochs):
+	train_set = train_set[torch.randperm(train_size)]
+	iter_num, loss_r_sum, loss_reg_sum = 0, 0., 0.
+	for i in range(train_size // BATCH_SIZE_TRAIN + 1):
+		
+		loss_r, loss_reg = train(model, optimizer, i)
+		step += 1
+		iter_num += 1
+		loss_r_sum += loss_r
+		loss_reg_sum += loss_reg
+	loss_r_train = loss_r_sum / train_size
+	loss_reg_train = loss_reg_sum / train_size
+	print('Epoch {} Step {}: Train {:.4f} Reg: {:.4f}'.format(epoch, step, loss_r_train, loss_reg_train))
+	iter_num, loss_r_sum, loss_reg_sum = 0, 0., 0.
+	loss_r_test, MAE, RMSE = test(model, test_set)
+	print('Test: {:.4f} MAE: {:.4f} RMSE: {:.4f}'.format(loss_r_test, MAE, RMSE))
+	loss_r_val, MAE, RMSE = test(model, val_set)
+	print('Val: {:.4f} MAE: {:.4f} RMSE: {:.4f}'.format(loss_r_val, MAE, RMSE))
+	scheduler.step()
+
+	if RMSE < bestRMSE:
+		bestRMSE = RMSE
+		save_model(model, path='./train-100k/')
