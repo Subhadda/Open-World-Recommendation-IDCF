@@ -15,4 +15,5 @@ yahoo:
 
 ml-100k:
   n_item:  1682
-  n_use
+  n_user: 943
+  n_rating: 5
