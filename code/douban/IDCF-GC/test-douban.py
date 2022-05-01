@@ -8,4 +8,8 @@ import argparse
 import yaml
 from model import IRMC_GC_Model, GCMCModel
 from utils import *
-from datetime import 
+from datetime import datetime
+import torch
+
+def fix_seed(seed):
+    rando
