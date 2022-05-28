@@ -24,4 +24,6 @@ parser.add_argument('--gpus', default='0', help='gpus')
 parser.add_argument('--extra', action="store_true", help='whether extra or inter')
 args = parser.parse_args()
 
-config = yaml.safe_load(open("./datainfo
+config = yaml.safe_load(open("./datainfo.yaml", 'r'))
+
+os.environ["CUDA_VISIBLE_DEVIC
