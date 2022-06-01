@@ -29,4 +29,7 @@ config = yaml.safe_load(open("./datainfo.yaml", 'r'))
 os.environ["CUDA_VISIBLE_DEVICES"] = args.gpus
 device = torch.device('cuda')
 
-LEARNING_RATE = 0.0
+LEARNING_RATE = 0.001
+DECAYING_FACTOR = 1.
+LAMBDA_REG = 0.05
+BATCH_SIZE_TRAIN
