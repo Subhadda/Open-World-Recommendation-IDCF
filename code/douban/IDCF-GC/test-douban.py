@@ -43,4 +43,7 @@ SPLIT_WAY = 'threshold'
 THRESHOLD = 30
 SUPP_RATIO = 0.8
 TRAINING_RATIO = 1
-EXTRA
+EXTRA = args.extra
+
+datadir = '../../../data/'
+n_user = config[DATASE
