@@ -36,4 +36,7 @@ BATCH_SIZE_TRAIN = 1024
 BATCH_SIZE_TEST = 1024
 HIS_MAXLEN = 100
 HIS_SAMPLE_NUM = 20
-n
+n_epochs = 1 # 500
+
+DATASET = 'douban'
+SPLIT_WAY = 'threshol
