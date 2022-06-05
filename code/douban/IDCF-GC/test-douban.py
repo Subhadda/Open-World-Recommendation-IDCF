@@ -39,4 +39,8 @@ HIS_SAMPLE_NUM = 20
 n_epochs = 1 # 500
 
 DATASET = 'douban'
-SPLIT_WAY = 'threshol
+SPLIT_WAY = 'threshold'
+THRESHOLD = 30
+SUPP_RATIO = 0.8
+TRAINING_RATIO = 1
+EXTRA
