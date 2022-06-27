@@ -46,4 +46,6 @@ TRAINING_RATIO = 1
 EXTRA = args.extra
 
 datadir = '../../../data/'
-n_user = config[DATASE
+n_user = config[DATASET]['n_user']
+n_item = config[DATASET]['n_item']
+n_rati
