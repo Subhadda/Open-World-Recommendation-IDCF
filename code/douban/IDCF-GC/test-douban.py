@@ -56,4 +56,7 @@ generate_data(datadir=datadir,
 				split_way=SPLIT_WAY,
 				supp_ratio=SUPP_RATIO, 
 				threshold=THRESHOLD,
-				training_ratio=TRA
+				training_ratio=TRAINING_RATIO)
+
+user_supp_num = len(user_supp_list)
+user_que_num
