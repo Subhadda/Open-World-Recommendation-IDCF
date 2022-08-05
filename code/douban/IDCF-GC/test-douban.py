@@ -62,4 +62,6 @@ user_supp_num = len(user_supp_list)
 user_que_num = n_user - user_supp_num
 
 if SPLIT_WAY == 'all':
-	train_set_s
+	train_set_supp = torch.tensor(train_set_supp + train_set_que)
+else:
+	tr
