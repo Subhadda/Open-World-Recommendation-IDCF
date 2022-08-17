@@ -65,4 +65,5 @@ if SPLIT_WAY == 'all':
 	train_set_supp = torch.tensor(train_set_supp + train_set_que)
 else:
 	train_set_supp = torch.tensor(train_set_supp)
-train_set_qu
+train_set_que = torch.tensor(train_set_que)
+test_set_supp = torch.
