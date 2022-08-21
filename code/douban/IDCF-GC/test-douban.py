@@ -67,4 +67,5 @@ else:
 	train_set_supp = torch.tensor(train_set_supp)
 train_set_que = torch.tensor(train_set_que)
 test_set_supp = torch.tensor(test_set_supp)
-test_set_que = torch.tensor(test_se
+test_set_que = torch.tensor(test_set_que)
+supp_users = torch.tensor(user_supp_list, dtype = torch.lon
