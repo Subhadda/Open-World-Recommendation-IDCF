@@ -71,4 +71,5 @@ test_set_que = torch.tensor(test_set_que)
 supp_users = torch.tensor(user_supp_list, dtype = torch.long)
 edge_IU = []	
 for n in range(n_rating):
-	edge_UI[n] = torch.
+	edge_UI[n] = torch.tensor(edge_UI[n])
+	edge_IU_n = edge_UI[n].transpose(1, 0).
