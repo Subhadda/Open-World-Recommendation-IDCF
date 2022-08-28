@@ -75,4 +75,7 @@ for n in range(n_rating):
 	edge_IU_n = edge_UI[n].transpose(1, 0).contiguous()
 	edge_IU.append(edge_IU_n)
 
-def sequence_adjust(
+def sequence_adjust(seq):
+	seq_new = seq
+	if len(seq) <= 0:
+		seq
