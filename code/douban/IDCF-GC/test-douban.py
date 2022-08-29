@@ -78,4 +78,4 @@ for n in range(n_rating):
 def sequence_adjust(seq):
 	seq_new = seq
 	if len(seq) <= 0:
-		seq
+		seq_new = [np.random.randint(0, n_item) for i in range(HIS_SAMPLE_NUM
