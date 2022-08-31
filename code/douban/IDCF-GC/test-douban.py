@@ -84,4 +84,6 @@ def sequence_adjust(seq):
 		seq_new = seq[:HIS_MAXLEN]
 	return seq_new
 
-def train(mode
+def train(model, optimizer, i, supp_or_que):
+	model.train()
+	o
