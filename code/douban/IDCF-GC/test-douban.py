@@ -86,4 +86,7 @@ def sequence_adjust(seq):
 
 def train(model, optimizer, i, supp_or_que):
 	model.train()
-	o
+	optimizer.zero_grad()
+	
+	if supp_or_que == 'supp':
+		train
