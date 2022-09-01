@@ -89,4 +89,4 @@ def train(model, optimizer, i, supp_or_que):
 	optimizer.zero_grad()
 	
 	if supp_or_que == 'supp':
-		train
+		train_set_supp_i = train_set_supp[i*BATCH_SIZE_TRAIN : 
