@@ -92,4 +92,5 @@ def train(model, optimizer, i, supp_or_que):
 		train_set_supp_i = train_set_supp[i*BATCH_SIZE_TRAIN : (i+1)*BATCH_SIZE_TRAIN]
 		train_set_supp_i_x = train_set_supp_i[:, :2].long().to(device)
 		train_set_supp_i_y = train_set_supp_i[:, 2].float().to(device)
-		edge_UI_i = [edge_UI[n][train_set_supp_i_x[:, 
+		edge_UI_i = [edge_UI[n][train_set_supp_i_x[:, 0]].to(device) for n in range(n_rating)]
+		edge_IU_i
