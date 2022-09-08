@@ -95,4 +95,6 @@ def train(model, optimizer, i, supp_or_que):
 		edge_UI_i = [edge_UI[n][train_set_supp_i_x[:, 0]].to(device) for n in range(n_rating)]
 		edge_IU_i = [edge_IU[n][train_set_supp_i_x[:, 1]].to(device) for n in range(n_rating)]
 
-		pred_y = model(train_set_supp_i_x, edge_UI_i,
+		pred_y = model(train_set_supp_i_x, edge_UI_i, edge_IU_i)
+		loss_r = torch.sum((train_set_supp_i_y - pred_y) ** 2)
+		l
