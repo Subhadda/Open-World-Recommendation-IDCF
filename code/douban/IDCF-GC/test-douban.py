@@ -97,4 +97,5 @@ def train(model, optimizer, i, supp_or_que):
 
 		pred_y = model(train_set_supp_i_x, edge_UI_i, edge_IU_i)
 		loss_r = torch.sum((train_set_supp_i_y - pred_y) ** 2)
-		l
+		loss_reg = model.regularization_loss()
+		loss = loss_r + LAMBD
