@@ -100,4 +100,5 @@ def train(model, optimizer, i, supp_or_que):
 		loss_reg = model.regularization_loss()
 		loss = loss_r + LAMBDA_REG * loss_reg
 	else:
-		train_set_que_i = train_set_que[i*BATCH_SI
+		train_set_que_i = train_set_que[i*BATCH_SIZE_TRAIN : (i+1)*BATCH_SIZE_TRAIN]
+		train_set_i_x = train_set_qu
