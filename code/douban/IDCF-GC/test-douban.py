@@ -101,4 +101,5 @@ def train(model, optimizer, i, supp_or_que):
 		loss = loss_r + LAMBDA_REG * loss_reg
 	else:
 		train_set_que_i = train_set_que[i*BATCH_SIZE_TRAIN : (i+1)*BATCH_SIZE_TRAIN]
-		train_set_i_x = train_set_qu
+		train_set_i_x = train_set_que_i[:, :2].long().to(device)
+		train_set_i_y = train_set_qu
