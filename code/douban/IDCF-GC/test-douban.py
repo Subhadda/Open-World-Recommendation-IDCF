@@ -108,4 +108,5 @@ def train(model, optimizer, i, supp_or_que):
 		dtype = torch.long
 		)   for k in range(train_set_que_i.size(0))]
 		train_set_hl_i = [train_set_his_i[k].size(0) for k in range(train_set_que_i.size(0))]
-		train_set_his_i = torch.nn.utils.rnn.pad_sequence(train_set_his_i, batch_first = True, padding_
+		train_set_his_i = torch.nn.utils.rnn.pad_sequence(train_set_his_i, batch_first = True, padding_value = 0.).to(device)
+		train_set_hl_i = torch.tensor(train
