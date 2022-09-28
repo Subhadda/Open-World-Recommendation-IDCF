@@ -112,4 +112,5 @@ def train(model, optimizer, i, supp_or_que):
 		train_set_hl_i = torch.tensor(train_set_hl_i, dtype=torch.long).to(device)
 		edge_UI_i = [edge_UI[n][train_set_i_x[:, 0]].to(device) for n in range(n_rating)]
 		edge_IU_i = [edge_IU[n][train_set_i_x[:, 1]].to(device) for n in range(n_rating)]
-		pred_y = model(train_set_i_x, train_set_his_i, train_
+		pred_y = model(train_set_i_x, train_set_his_i, train_set_hl_i, edge_UI_i, edge_IU_i)
+		loss = torch.sum((train_s
