@@ -117,4 +117,6 @@ def train(model, optimizer, i, supp_or_que):
 		
 	loss.backward()
 
-def test(mode
+def test(model, test_set, supp_or_que):
+	model.eval()
+	loss_r_test_sum
