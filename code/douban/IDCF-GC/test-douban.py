@@ -119,4 +119,5 @@ def train(model, optimizer, i, supp_or_que):
 
 def test(model, test_set, supp_or_que):
 	model.eval()
-	loss_r_test_sum
+	loss_r_test_sum, l1_sum, l2_sum, ndcg_sum, num = 0., 0., 0., 0., 0
+	test_size = test
