@@ -122,4 +122,5 @@ def test(model, test_set, supp_or_que):
 	loss_r_test_sum, l1_sum, l2_sum, ndcg_sum, num = 0., 0., 0., 0., 0
 	test_size = test_set.size(0)
 	user_score_dict, user_label_dict = {}, {}
-	for k
+	for k in user_his_dic.keys():
+		user_score_dict[k] = []
