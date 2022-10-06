@@ -124,3 +124,5 @@ def test(model, test_set, supp_or_que):
 	user_score_dict, user_label_dict = {}, {}
 	for k in user_his_dic.keys():
 		user_score_dict[k] = []
+		user_label_dict[k] = []
+	for i in range(test_size // BATC
