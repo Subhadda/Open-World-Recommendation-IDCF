@@ -128,4 +128,5 @@ def test(model, test_set, supp_or_que):
 	for i in range(test_size // BATCH_SIZE_TEST + 1):
 		with torch.no_grad():
 			test_set_i = test_set[i*BATCH_SIZE_TEST : (i+1)*BATCH_SIZE_TEST]
-			test_set_i_x = test_s
+			test_set_i_x = test_set_i[:, :2].long().to(device)
+			test_set_i_y = test_set_i
