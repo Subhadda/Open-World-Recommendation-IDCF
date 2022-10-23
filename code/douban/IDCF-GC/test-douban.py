@@ -140,4 +140,5 @@ def test(model, test_set, supp_or_que):
 			edge_UI_i = [edge_UI[n][test_set_i_x[:, 0]].to(device) for n in range(n_rating)]
 			edge_IU_i = [edge_IU[n][test_set_i_x[:, 1]].to(device) for n in range(n_rating)]
 
-			if supp_or_que 
+			if supp_or_que == 'supp':
+				pred_y = model(test_set_i_x, edge_UI_i, edg
