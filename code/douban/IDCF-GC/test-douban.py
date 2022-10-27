@@ -143,4 +143,5 @@ def test(model, test_set, supp_or_que):
 			if supp_or_que == 'supp':
 				pred_y = model(test_set_i_x, edge_UI_i, edge_IU_i)
 			else:
-				pred_y = model(test_set_i_x, test_set_his_i
+				pred_y = model(test_set_i_x, test_set_his_i, test_set_hl_i, edge_UI_i, edge_IU_i)
+			loss_r = torch.sum((test_set_i_y -
