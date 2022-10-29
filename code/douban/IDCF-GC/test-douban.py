@@ -148,4 +148,5 @@ def test(model, test_set, supp_or_que):
 		y_hat, y = pred_y.cpu().numpy(), test_set_i_y.cpu().numpy()
 		loss_r_test_sum += loss_r.item()
 		l1_sum += np.sum( np.abs(y_hat - y) )
-		l2
+		l2_sum += np.sum( np.square(y_hat - y) )
+		for k in range(test_se
