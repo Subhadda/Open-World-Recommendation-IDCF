@@ -149,4 +149,5 @@ def test(model, test_set, supp_or_que):
 		loss_r_test_sum += loss_r.item()
 		l1_sum += np.sum( np.abs(y_hat - y) )
 		l2_sum += np.sum( np.square(y_hat - y) )
-		for k in range(test_se
+		for k in range(test_set_i.size(0)):
+			u, s, y = test_set_i_x[k, 0].item(), p
