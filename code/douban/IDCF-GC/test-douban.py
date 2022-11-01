@@ -150,4 +150,6 @@ def test(model, test_set, supp_or_que):
 		l1_sum += np.sum( np.abs(y_hat - y) )
 		l2_sum += np.sum( np.square(y_hat - y) )
 		for k in range(test_set_i.size(0)):
-			u, s, y = test_set_i_x[k, 0].item(), p
+			u, s, y = test_set_i_x[k, 0].item(), pred_y[k].item(), test_set_i_y[k].item()
+			user_score_dict[u] += [s]
+	
