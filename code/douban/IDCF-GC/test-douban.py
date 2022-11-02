@@ -152,4 +152,5 @@ def test(model, test_set, supp_or_que):
 		for k in range(test_set_i.size(0)):
 			u, s, y = test_set_i_x[k, 0].item(), pred_y[k].item(), test_set_i_y[k].item()
 			user_score_dict[u] += [s]
-	
+			user_label_dict[u] += [y]
+	TestLoss = loss_r_test_sum / test_size
