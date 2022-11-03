@@ -154,3 +154,6 @@ def test(model, test_set, supp_or_que):
 			user_score_dict[u] += [s]
 			user_label_dict[u] += [y]
 	TestLoss = loss_r_test_sum / test_size
+	MAE = l1_sum / test_size
+	RMSE = np.sqrt( l2_sum / test_size )
+	
