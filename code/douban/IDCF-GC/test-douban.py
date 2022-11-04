@@ -157,4 +157,6 @@ def test(model, test_set, supp_or_que):
 	MAE = l1_sum / test_size
 	RMSE = np.sqrt( l2_sum / test_size )
 	for k in user_score_dict.keys():
-		if len(user_score_
+		if len(user_score_dict[k]) <= 1:
+			continue
+		ndcg_sum += ndcg_k(user_score_dict[k],
