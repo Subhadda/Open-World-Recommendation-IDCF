@@ -159,4 +159,6 @@ def test(model, test_set, supp_or_que):
 	for k in user_score_dict.keys():
 		if len(user_score_dict[k]) <= 1:
 			continue
-		ndcg_sum += ndcg_k(user_score_dict[k],
+		ndcg_sum += ndcg_k(user_score_dict[k], user_label_dict[k], len(user_score_dict[k]))
+		num += 1
+	
