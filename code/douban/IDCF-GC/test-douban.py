@@ -163,4 +163,7 @@ def test(model, test_set, supp_or_que):
 		num += 1
 	return TestLoss, MAE, RMSE, ndcg_sum, num
 
-def load_model_
+def load_model_s(model, path):
+	model.load_model(path+'model.pkl')
+
+def load_mode
