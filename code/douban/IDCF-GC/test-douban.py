@@ -168,4 +168,6 @@ def load_model_s(model, path):
 
 def load_model_q(model, path):
 	if EXTRA:
-		model.load_model(path + 'model-ex
+		model.load_model(path + 'model-extra.pkl')
+	else:
+		model.load_model(path+'model-inter
