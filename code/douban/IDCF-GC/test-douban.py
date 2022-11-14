@@ -166,4 +166,6 @@ def test(model, test_set, supp_or_que):
 def load_model_s(model, path):
 	model.load_model(path+'model.pkl')
 
-def load_mode
+def load_model_q(model, path):
+	if EXTRA:
+		model.load_model(path + 'model-ex
