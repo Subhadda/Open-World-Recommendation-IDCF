@@ -170,4 +170,8 @@ def load_model_q(model, path):
 	if EXTRA:
 		model.load_model(path + 'model-extra.pkl')
 	else:
-		model.load_model(path+'model-inter
+		model.load_model(path+'model-inter.pkl')
+
+if EXTRA:
+	model_q = IRMC_GC_Model(n_user=n_user,
+			
