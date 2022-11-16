@@ -176,4 +176,7 @@ if EXTRA:
 	model_q = IRMC_GC_Model(n_user=n_user,
 							n_item=n_item,
 							n_rating=n_rating,
-							supp_users=sup
+							supp_users=supp_users,
+							embedding_size=32,
+							hidden_size=32,
+							devic
