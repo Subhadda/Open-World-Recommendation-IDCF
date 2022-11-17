@@ -180,4 +180,5 @@ if EXTRA:
 							embedding_size=32,
 							hidden_size=32,
 							device=device).to(device)
-	load_model_q(model_q, './tra
+	load_model_q(model_q, './train-douban/')
+	loss_r_test, MAE_q, RMSE_q, ndcg_sum_q, num
