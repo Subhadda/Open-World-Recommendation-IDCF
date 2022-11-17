@@ -181,4 +181,5 @@ if EXTRA:
 							hidden_size=32,
 							device=device).to(device)
 	load_model_q(model_q, './train-douban/')
-	loss_r_test, MAE_q, RMSE_q, ndcg_sum_q, num
+	loss_r_test, MAE_q, RMSE_q, ndcg_sum_q, num_q = test(model_q, test_set_que, supp_or_que='que')
+	NDCG_q
