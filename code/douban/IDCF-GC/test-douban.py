@@ -186,4 +186,6 @@ if EXTRA:
 	log = 'Que Test Result: MAE: {:.4f} RMSE: {:.4f} NDCG: {:.4f}'.format(MAE_q, RMSE_q, NDCG_q)
 	print(log)
 else:
-	model_s = GCMCModel(n_user = 
+	model_s = GCMCModel(n_user = n_user,
+					n_item = n_item,
+					n_rating = n_ra
