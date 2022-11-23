@@ -188,4 +188,7 @@ if EXTRA:
 else:
 	model_s = GCMCModel(n_user = n_user,
 					n_item = n_item,
-					n_rating = n_ra
+					n_rating = n_rating,
+					embedding_size=32,
+					hidden_size=32,
+				
