@@ -191,4 +191,5 @@ else:
 					n_rating = n_rating,
 					embedding_size=32,
 					hidden_size=32,
-				
+					device = device).to(device)
+	load_model_s(model_s, './pretrain-doub
