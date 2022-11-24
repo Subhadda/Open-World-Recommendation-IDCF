@@ -192,4 +192,5 @@ else:
 					embedding_size=32,
 					hidden_size=32,
 					device = device).to(device)
-	load_model_s(model_s, './pretrain-doub
+	load_model_s(model_s, './pretrain-douban/')
+	loss_r_test, MAE_s, RMSE_s, ndcg_sum_s, num_s = te
