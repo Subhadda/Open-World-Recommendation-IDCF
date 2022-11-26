@@ -195,4 +195,7 @@ else:
 	load_model_s(model_s, './pretrain-douban/')
 	loss_r_test, MAE_s, RMSE_s, ndcg_sum_s, num_s = test(model_s, test_set_supp, supp_or_que='supp')
 	NDCG_s = ndcg_sum_s / num_s
-	log = 'Key Test Result: MAE: {:.4f} RMSE: {:.4f} NDCG: {:.4f}'.format(M
+	log = 'Key Test Result: MAE: {:.4f} RMSE: {:.4f} NDCG: {:.4f}'.format(MAE_s, RMSE_s, NDCG_s)
+	print(log)
+
+	model_q = IRMC_GC_Mode
