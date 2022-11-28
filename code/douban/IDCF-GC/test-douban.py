@@ -200,4 +200,6 @@ else:
 
 	model_q = IRMC_GC_Model(n_user = n_user,
 					n_item = n_item,
-					n_r
+					n_rating = n_rating,
+					supp_users = supp_users,
+					e
