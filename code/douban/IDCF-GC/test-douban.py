@@ -198,4 +198,6 @@ else:
 	log = 'Key Test Result: MAE: {:.4f} RMSE: {:.4f} NDCG: {:.4f}'.format(MAE_s, RMSE_s, NDCG_s)
 	print(log)
 
-	model_q = IRMC_GC_Mode
+	model_q = IRMC_GC_Model(n_user = n_user,
+					n_item = n_item,
+					n_r
