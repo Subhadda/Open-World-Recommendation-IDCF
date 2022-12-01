@@ -202,4 +202,6 @@ else:
 					n_item = n_item,
 					n_rating = n_rating,
 					supp_users = supp_users,
-					e
+					embedding_size=32,
+					hidden_size=32,
+					device = device).
