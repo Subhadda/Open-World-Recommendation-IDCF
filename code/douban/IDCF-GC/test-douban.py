@@ -204,4 +204,7 @@ else:
 					supp_users = supp_users,
 					embedding_size=32,
 					hidden_size=32,
-					device = device).
+					device = device).to(device)
+	load_model_q(model_q, './train-douban/')
+
+	l
