@@ -207,4 +207,4 @@ else:
 					device = device).to(device)
 	load_model_q(model_q, './train-douban/')
 
-	l
+	loss_r_test, MAE_q, RMSE_q, ndcg_sum_q, num_q = test(model_q,
