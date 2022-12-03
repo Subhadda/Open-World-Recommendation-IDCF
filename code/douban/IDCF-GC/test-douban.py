@@ -209,4 +209,4 @@ else:
 
 	loss_r_test, MAE_q, RMSE_q, ndcg_sum_q, num_q = test(model_q, test_set_que, supp_or_que='que')
 	NDCG_q = ndcg_sum_q / num_q
-	
+	log = 'Que Test Result: MAE: {:.4f} RMSE: {:.4f} NDCG: {:.4
