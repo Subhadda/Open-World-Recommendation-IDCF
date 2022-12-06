@@ -212,4 +212,5 @@ else:
 	log = 'Que Test Result: MAE: {:.4f} RMSE: {:.4f} NDCG: {:.4f}'.format(MAE_q, RMSE_q, NDCG_q)
 	print(log)
 
-	supp_size, que_size
+	supp_size, que_size = test_set_supp.size(0), test_set_que.size(0)
+	MAE = ( MAE_s * supp_size + MAE_
