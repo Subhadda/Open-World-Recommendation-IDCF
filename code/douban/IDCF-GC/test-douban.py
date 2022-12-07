@@ -214,4 +214,4 @@ else:
 
 	supp_size, que_size = test_set_supp.size(0), test_set_que.size(0)
 	MAE = ( MAE_s * supp_size + MAE_q * que_size )/ (supp_size+que_size)
-	RMSE = np.s
+	RMSE = np.sqrt( (RMSE_s**2 * supp_size + RMSE_q**2 * qu
