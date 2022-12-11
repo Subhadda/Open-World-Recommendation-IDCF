@@ -217,4 +217,4 @@ else:
 	RMSE = np.sqrt( (RMSE_s**2 * supp_size + RMSE_q**2 * que_size) / (supp_size+que_size))
 	NDCG = (ndcg_sum_q + ndcg_sum_s) / (num_q + num_s)
 	log = 'All Test Result: MAE: {:.4f} RMSE: {:.4f} NDCG: {:.4f}'.format(MAE, RMSE, NDCG)
-	pri
+	print(log)
