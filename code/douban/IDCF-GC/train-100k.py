@@ -16,4 +16,7 @@ def fix_seed(seed):
     np.random.seed(seed)
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
-    torc
+    torch.backends.cudnn.deterministic = True
+fix_seed(1234)
+
+parser = argpa
