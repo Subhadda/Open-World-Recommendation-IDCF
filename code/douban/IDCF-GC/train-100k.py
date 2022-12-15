@@ -14,4 +14,6 @@ import torch
 def fix_seed(seed):
     random.seed(seed)
     np.random.seed(seed)
-    torch.manual_
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    torc
