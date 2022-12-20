@@ -21,4 +21,6 @@ fix_seed(1234)
 
 parser = argparse.ArgumentParser(description='PMF')
 parser.add_argument('--gpus', default='0', help='gpus')
-args 
+args = parser.parse_args()
+
+config = yaml.safe_load(open("./datainfo.yaml", 
