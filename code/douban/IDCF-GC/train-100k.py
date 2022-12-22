@@ -23,4 +23,7 @@ parser = argparse.ArgumentParser(description='PMF')
 parser.add_argument('--gpus', default='0', help='gpus')
 args = parser.parse_args()
 
-config = yaml.safe_load(open("./datainfo.yaml", 
+config = yaml.safe_load(open("./datainfo.yaml", 'r'))
+
+os.environ["CUDA_VISIBLE_DEVICES"] = args.gpus
+device = torch.d
