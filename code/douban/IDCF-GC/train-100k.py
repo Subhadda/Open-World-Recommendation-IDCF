@@ -26,4 +26,6 @@ args = parser.parse_args()
 config = yaml.safe_load(open("./datainfo.yaml", 'r'))
 
 os.environ["CUDA_VISIBLE_DEVICES"] = args.gpus
-device = torch.d
+device = torch.device('cuda')
+
+LEARNING_RATE = 0.01 # extra 0.001 
