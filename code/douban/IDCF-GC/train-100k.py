@@ -42,4 +42,6 @@ SPLIT_WAY = 'threshold'
 EXTRA = False
 THRESHOLD = 30
 SUPP_RATIO = 0.8
-TRAINING_RAT
+TRAINING_RATIO = 1
+datadir = '../../../data/'
+n_user = config[DATA
