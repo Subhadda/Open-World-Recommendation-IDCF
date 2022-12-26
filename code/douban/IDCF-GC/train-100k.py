@@ -38,4 +38,8 @@ HIS_SAMPLE_NUM = 20
 n_epochs = 500 # 500
 
 DATASET = 'ml-100k'
-SPLIT_WAY = 'thr
+SPLIT_WAY = 'threshold'
+EXTRA = False
+THRESHOLD = 30
+SUPP_RATIO = 0.8
+TRAINING_RAT
