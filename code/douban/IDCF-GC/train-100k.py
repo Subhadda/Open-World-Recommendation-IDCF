@@ -44,4 +44,6 @@ THRESHOLD = 30
 SUPP_RATIO = 0.8
 TRAINING_RATIO = 1
 datadir = '../../../data/'
-n_user = config[DATA
+n_user = config[DATASET]['n_user']
+n_item = config[DATASET]['n_item']
+n_rating = confi
