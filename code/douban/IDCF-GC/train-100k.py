@@ -48,4 +48,4 @@ n_user = config[DATASET]['n_user']
 n_item = config[DATASET]['n_item']
 n_rating = config[DATASET]['n_rating']
 
-train_set_supp, train_set_que, test_s
+train_set_supp, train_set_que, test_set_supp, test_set_que, user_supp_list, user_his_dic, edge_U
