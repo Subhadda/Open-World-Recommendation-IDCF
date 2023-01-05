@@ -56,4 +56,6 @@ generate_data(datadir=datadir,
 				threshold=THRESHOLD,
 				training_ratio=TRAINING_RATIO)
 
-supp_users = torch.tensor(user_supp_list, 
+supp_users = torch.tensor(user_supp_list, dtype = torch.long)
+if EXTRA:
+	train_set = torch.
