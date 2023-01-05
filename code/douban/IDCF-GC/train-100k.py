@@ -54,4 +54,6 @@ generate_data(datadir=datadir,
 				split_way=SPLIT_WAY,
 				supp_ratio=SUPP_RATIO, 
 				threshold=THRESHOLD,
-				training_ratio=TRAINING_
+				training_ratio=TRAINING_RATIO)
+
+supp_users = torch.tensor(user_supp_list, 
