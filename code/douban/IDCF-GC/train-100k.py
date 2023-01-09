@@ -58,4 +58,6 @@ generate_data(datadir=datadir,
 
 supp_users = torch.tensor(user_supp_list, dtype = torch.long)
 if EXTRA:
-	train_set = torch.
+	train_set = torch.tensor(train_set_supp)
+else:
+	train_set = torch.tensor(train_s
