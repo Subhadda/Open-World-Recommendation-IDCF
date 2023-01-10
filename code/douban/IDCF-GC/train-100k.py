@@ -62,4 +62,6 @@ if EXTRA:
 else:
 	train_set = torch.tensor(train_set_que)
 test_set = torch.tensor(test_set_que)
-edge_I
+edge_IU = []	
+for n in range(n_rating):
+	edge_UI[n] = torch.tensor
