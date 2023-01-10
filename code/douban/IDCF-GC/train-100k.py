@@ -60,4 +60,6 @@ supp_users = torch.tensor(user_supp_list, dtype = torch.long)
 if EXTRA:
 	train_set = torch.tensor(train_set_supp)
 else:
-	train_set = torch.tensor(train_s
+	train_set = torch.tensor(train_set_que)
+test_set = torch.tensor(test_set_que)
+edge_I
