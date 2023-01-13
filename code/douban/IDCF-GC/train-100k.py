@@ -66,4 +66,6 @@ edge_IU = []
 for n in range(n_rating):
 	edge_UI[n] = torch.tensor(edge_UI[n])
 	edge_IU_n = edge_UI[n].transpose(1, 0).contiguous()
-	
+	edge_IU.append(edge_IU_n)
+
+train_set = train_set[torc
