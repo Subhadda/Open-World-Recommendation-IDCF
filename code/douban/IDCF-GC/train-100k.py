@@ -69,4 +69,8 @@ for n in range(n_rating):
 	edge_IU.append(edge_IU_n)
 
 train_set = train_set[torch.randperm(train_set.size(0))]
-val_set = train_set[int(0.95 * trai
+val_set = train_set[int(0.95 * train_set.size(0)):]
+if EXTRA:
+	pass
+else:
+	train_set = train_set[:int
