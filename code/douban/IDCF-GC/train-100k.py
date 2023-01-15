@@ -73,4 +73,6 @@ val_set = train_set[int(0.95 * train_set.size(0)):]
 if EXTRA:
 	pass
 else:
-	train_set = train_set[:int
+	train_set = train_set[:int(0.95*train_set.size(0))]
+
+def sequence_adjust(seq
