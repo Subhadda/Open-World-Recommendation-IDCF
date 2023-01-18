@@ -75,4 +75,7 @@ if EXTRA:
 else:
 	train_set = train_set[:int(0.95*train_set.size(0))]
 
-def sequence_adjust(seq
+def sequence_adjust(seq):
+	seq_new = seq
+	if len(seq) <= 0:
+		seq_new = [np.random.randi
