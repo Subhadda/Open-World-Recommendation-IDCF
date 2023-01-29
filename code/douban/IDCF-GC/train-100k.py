@@ -86,4 +86,6 @@ def sequence_adjust(seq):
 
 def train(model, optimizer, i):
 	model.train()
-	optimizer
+	optimizer.zero_grad()
+	
+	train_set_que_i = train_set[i*BATCH_SIZE_TRA
