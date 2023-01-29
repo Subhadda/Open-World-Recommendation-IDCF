@@ -82,4 +82,8 @@ def sequence_adjust(seq):
 	if len(seq) > HIS_MAXLEN:
 		random.shuffle(seq)
 		seq_new = seq[:HIS_MAXLEN]
-	r
+	return seq_new
+
+def train(model, optimizer, i):
+	model.train()
+	optimizer
