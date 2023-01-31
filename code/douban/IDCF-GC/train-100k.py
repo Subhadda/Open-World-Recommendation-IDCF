@@ -91,4 +91,6 @@ def train(model, optimizer, i):
 	train_set_que_i = train_set[i*BATCH_SIZE_TRAIN : (i+1)*BATCH_SIZE_TRAIN]
 	
 	train_set_i_x = train_set_que_i[:, :2].long().to(device)
-	train_set_i_y = train_set_que_i[:, 2
+	train_set_i_y = train_set_que_i[:, 2].float().to(device)
+	train_set_his_i = [torch.tensor(
+		sequenc
