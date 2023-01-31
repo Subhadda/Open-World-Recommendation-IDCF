@@ -93,4 +93,5 @@ def train(model, optimizer, i):
 	train_set_i_x = train_set_que_i[:, :2].long().to(device)
 	train_set_i_y = train_set_que_i[:, 2].float().to(device)
 	train_set_his_i = [torch.tensor(
-		sequenc
+		sequence_adjust( user_his_dic[train_set_que_i[k][0].item()] ),
+		dtype = 
