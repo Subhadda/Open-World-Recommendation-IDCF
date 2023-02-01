@@ -94,4 +94,6 @@ def train(model, optimizer, i):
 	train_set_i_y = train_set_que_i[:, 2].float().to(device)
 	train_set_his_i = [torch.tensor(
 		sequence_adjust( user_his_dic[train_set_que_i[k][0].item()] ),
-		dtype = 
+		dtype = torch.long
+		)   for k in range(train_set_que_i.size(0))]
+	train_set_hl_i = [tr
