@@ -98,4 +98,4 @@ def train(model, optimizer, i):
 		)   for k in range(train_set_que_i.size(0))]
 	train_set_hl_i = [train_set_his_i[k].size(0) for k in range(train_set_que_i.size(0))]
 	train_set_his_i = torch.nn.utils.rnn.pad_sequence(train_set_his_i, batch_first = True, padding_value = 0.).to(device)
-	t
+	train_set_hl_i = torch.tensor(train_set_hl_i, dtype=tor
