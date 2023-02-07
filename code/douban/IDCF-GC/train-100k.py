@@ -100,4 +100,7 @@ def train(model, optimizer, i):
 	train_set_his_i = torch.nn.utils.rnn.pad_sequence(train_set_his_i, batch_first = True, padding_value = 0.).to(device)
 	train_set_hl_i = torch.tensor(train_set_hl_i, dtype=torch.long).to(device)
 	edge_UI_i = [edge_UI[n][train_set_i_x[:, 0]].to(device) for n in range(n_rating)]
-	edge_IU_i = [edge_IU[n][train_set_i_x[:, 1]].to(device) for n in range(n_r
+	edge_IU_i = [edge_IU[n][train_set_i_x[:, 1]].to(device) for n in range(n_rating)]
+
+	if EXTRA:
+		pred_y, user_emb_ind, user_e
