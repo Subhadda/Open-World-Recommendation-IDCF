@@ -105,4 +105,4 @@ def train(model, optimizer, i):
 	if EXTRA:
 		pred_y, user_emb_ind, user_emb_trd = model(train_set_i_x, train_set_his_i, train_set_hl_i, edge_UI_i, edge_IU_i, mode='EXTRA')
 		loss = torch.sum((train_set_i_y - pred_y) ** 2)
-		user_e
+		user_emb_trd_ = user_emb_trd.unsqueeze(0).repeat(user_emb_ind.size(0
