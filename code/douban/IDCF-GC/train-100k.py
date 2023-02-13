@@ -108,4 +108,6 @@ def train(model, optimizer, i):
 		user_emb_trd_ = user_emb_trd.unsqueeze(0).repeat(user_emb_ind.size(0), 1, 1)
 		user_emb_ind_ = user_emb_ind.unsqueeze(1).repeat(1, user_emb_trd.size(0), 1)
 		dot_prod = torch.sum(torch.mul(user_emb_trd_, user_emb_ind_), dim=-1)
-		loss_con = - torch.m
+		loss_con = - torch.mean(
+			dot_prod.diagonal() - torch.logsumexp(dot_prod, dim=-1)
+		
