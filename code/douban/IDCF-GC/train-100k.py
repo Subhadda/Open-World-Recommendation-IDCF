@@ -107,4 +107,5 @@ def train(model, optimizer, i):
 		loss = torch.sum((train_set_i_y - pred_y) ** 2)
 		user_emb_trd_ = user_emb_trd.unsqueeze(0).repeat(user_emb_ind.size(0), 1, 1)
 		user_emb_ind_ = user_emb_ind.unsqueeze(1).repeat(1, user_emb_trd.size(0), 1)
-		dot_prod = torch.sum(torc
+		dot_prod = torch.sum(torch.mul(user_emb_trd_, user_emb_ind_), dim=-1)
+		loss_con = - torch.m
