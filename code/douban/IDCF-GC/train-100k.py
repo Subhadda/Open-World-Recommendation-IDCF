@@ -110,4 +110,7 @@ def train(model, optimizer, i):
 		dot_prod = torch.sum(torch.mul(user_emb_trd_, user_emb_ind_), dim=-1)
 		loss_con = - torch.mean(
 			dot_prod.diagonal() - torch.logsumexp(dot_prod, dim=-1)
-		
+		)
+		loss += 10.0 * loss_con
+	else:
+		pred_y = model(train_set_i_x, train
