@@ -113,4 +113,5 @@ def train(model, optimizer, i):
 		)
 		loss += 10.0 * loss_con
 	else:
-		pred_y = model(train_set_i_x, train
+		pred_y = model(train_set_i_x, train_set_his_i, train_set_hl_i, edge_UI_i, edge_IU_i)
+		loss = torch.sum((tr
