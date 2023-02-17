@@ -121,4 +121,6 @@ def train(model, optimizer, i):
 	return loss.item(), 0.
 
 def test(model, test_set, i):
-	m
+	model.eval()
+	with torch.no_grad():
+		test_set_i = test_
