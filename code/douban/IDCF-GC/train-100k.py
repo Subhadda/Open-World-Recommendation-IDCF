@@ -118,3 +118,7 @@ def train(model, optimizer, i):
 
 	loss.backward()
 	optimizer.step()
+	return loss.item(), 0.
+
+def test(model, test_set, i):
+	m
