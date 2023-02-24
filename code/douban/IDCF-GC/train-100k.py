@@ -128,4 +128,6 @@ def test(model, test_set, i):
 		test_set_i_y = test_set_i[:, 2].float().to(device)
 		test_set_his_i = [torch.tensor(
 			sequence_adjust( user_his_dic[test_set_i[k][0].item()] ),
-			dty
+			dtype = torch.long
+			)   for k in range(test_set_i.size(0))]
+		test_set_hl_i = [test
