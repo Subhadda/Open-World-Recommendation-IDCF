@@ -132,4 +132,4 @@ def test(model, test_set, i):
 			)   for k in range(test_set_i.size(0))]
 		test_set_hl_i = [test_set_his_i[k].size(0) for k in range(test_set_i.size(0))]
 		test_set_his_i = torch.nn.utils.rnn.pad_sequence(test_set_his_i, batch_first = True, padding_value = 0.).to(device)
-		t
+		test_set_hl_i = torch.tensor(test_set_hl_i, dtype=torch.l
