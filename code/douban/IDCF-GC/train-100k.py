@@ -139,4 +139,5 @@ def test(model, test_set, i):
 		pred_y = model(test_set_i_x, test_set_his_i, test_set_hl_i, edge_UI_i, edge_IU_i)
 		loss_r = torch.sum((test_set_i_y - pred_y) ** 2)
 	y_hat, y = pred_y.cpu().numpy(), test_set_i_y.cpu().numpy()
-	l1 = np.sum( np
+	l1 = np.sum( np.abs(y_hat - y) )
+	l2 = np.sum( np.square(y_hat - y)
