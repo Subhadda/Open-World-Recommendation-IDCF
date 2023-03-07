@@ -145,4 +145,6 @@ def test(model, test_set, i):
 	return loss_r.item(), l1, l2
 
 def save_model(model, path):
-	if EXT
+	if EXTRA:
+		torch.save(model.state_dict(), path+'model-extra.pkl')
+	els
