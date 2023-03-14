@@ -157,4 +157,6 @@ train_size, val_size, test_size = train_set.size(0), val_set.size(0), test_set.s
 n_iter = n_epochs * train_size // BATCH_SIZE_TRAIN
 bestRMSE = 10.0
 
-model = IRMC_GC_Model(n_user 
+model = IRMC_GC_Model(n_user = n_user, 
+				n_item = n_item, 
+				n_rating
