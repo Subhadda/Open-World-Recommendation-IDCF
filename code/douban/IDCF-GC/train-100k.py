@@ -162,4 +162,5 @@ model = IRMC_GC_Model(n_user = n_user,
 				n_rating = n_rating,
 				supp_users = supp_users, 
 				device = device).to(device)
-load_model(model, './pretrain-100k
+load_model(model, './pretrain-100k/')
+optimizer = torch.optim.Adam( filter(lambda p: p.requires
