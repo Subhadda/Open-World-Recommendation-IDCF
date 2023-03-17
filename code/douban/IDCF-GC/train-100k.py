@@ -163,4 +163,5 @@ model = IRMC_GC_Model(n_user = n_user,
 				supp_users = supp_users, 
 				device = device).to(device)
 load_model(model, './pretrain-100k/')
-optimizer = torch.optim.Adam( filter(lambda p: p.requires_grad, model.parameters()), lr = LEARNING_RATE, weight_deca
+optimizer = torch.optim.Adam( filter(lambda p: p.requires_grad, model.parameters()), lr = LEARNING_RATE, weight_decay=1) #5e-2
+scheduler = torch.optim.lr_scheduler.ExponentialLR(opt
