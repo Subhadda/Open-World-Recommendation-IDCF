@@ -166,4 +166,5 @@ load_model(model, './pretrain-100k/')
 optimizer = torch.optim.Adam( filter(lambda p: p.requires_grad, model.parameters()), lr = LEARNING_RATE, weight_decay=1) #5e-2
 scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=DECAYING_FACTOR)
 start_time = datetime.now()
-fo
+for epoch in range(n_epochs):
+	train_set = train_set[to
