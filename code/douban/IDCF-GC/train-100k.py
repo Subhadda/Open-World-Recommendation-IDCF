@@ -171,4 +171,6 @@ for epoch in range(n_epochs):
 	loss_r_sum, loss_rec_sum = 0., 0.
 	for i in range(train_size // BATCH_SIZE_TRAIN + 1):
 		loss_r, loss_rec = train(model, optimizer, i)
-		loss_r_sum += los
+		loss_r_sum += loss_r
+		loss_rec_sum += loss_rec
+	loss_r_train = loss_r_sum / t
