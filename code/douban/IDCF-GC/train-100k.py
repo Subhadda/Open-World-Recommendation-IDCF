@@ -173,4 +173,6 @@ for epoch in range(n_epochs):
 		loss_r, loss_rec = train(model, optimizer, i)
 		loss_r_sum += loss_r
 		loss_rec_sum += loss_rec
-	loss_r_train = loss_r_sum / t
+	loss_r_train = loss_r_sum / train_size
+	loss_rec_train = loss_rec_sum / train_size
+	cos
