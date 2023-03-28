@@ -179,4 +179,5 @@ for epoch in range(n_epochs):
 	print('Epoch {}: TrainLoss {:.4f} RecLoss: {:.4f} (left: {})'.format(epoch, loss_r_train, loss_rec_train, cost_time))
 	scheduler.step()
 
-	loss_r_
+	loss_r_test_sum, l1_sum, l2_sum = 0., 0., 0.
+	for i in range(test_size // BATC
