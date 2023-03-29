@@ -180,4 +180,5 @@ for epoch in range(n_epochs):
 	scheduler.step()
 
 	loss_r_test_sum, l1_sum, l2_sum = 0., 0., 0.
-	for i in range(test_size // BATC
+	for i in range(test_size // BATCH_SIZE_TEST + 1):
+		loss_r_test, l1, l2 = test(model, test_set, 
