@@ -184,4 +184,6 @@ for epoch in range(n_epochs):
 		loss_r_test, l1, l2 = test(model, test_set, i)
 		loss_r_test_sum += loss_r_test
 		l1_sum += l1
-		l2_sum += 
+		l2_sum += l2
+	TestLoss = loss_r_test_sum / test_size
+	MAE = l1_sum / test_size
