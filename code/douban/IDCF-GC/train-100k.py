@@ -187,3 +187,5 @@ for epoch in range(n_epochs):
 		l2_sum += l2
 	TestLoss = loss_r_test_sum / test_size
 	MAE = l1_sum / test_size
+	RMSE = np.sqrt( l2_sum / test_size )
+	print('Test
