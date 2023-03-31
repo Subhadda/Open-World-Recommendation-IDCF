@@ -188,4 +188,8 @@ for epoch in range(n_epochs):
 	TestLoss = loss_r_test_sum / test_size
 	MAE = l1_sum / test_size
 	RMSE = np.sqrt( l2_sum / test_size )
-	print('TestLoss: {:.4f} MAE: {:.4f} RMSE: {:.4f}'.format(TestLoss, MAE, 
+	print('TestLoss: {:.4f} MAE: {:.4f} RMSE: {:.4f}'.format(TestLoss, MAE, RMSE))
+
+	if EXTRA:
+		save_model(model, './train-100k/')
+	el
