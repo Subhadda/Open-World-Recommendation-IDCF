@@ -194,4 +194,5 @@ for epoch in range(n_epochs):
 		save_model(model, './train-100k/')
 	else:
 		loss_r_val_sum, l1_sum, l2_sum = 0., 0., 0.
-		for i in range(val_size
+		for i in range(val_size // BATCH_SIZE_TEST + 1):
+			loss_r_val, l1, l2 = test(model, val_set, i)
