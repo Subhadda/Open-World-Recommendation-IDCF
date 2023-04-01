@@ -192,4 +192,6 @@ for epoch in range(n_epochs):
 
 	if EXTRA:
 		save_model(model, './train-100k/')
-	el
+	else:
+		loss_r_val_sum, l1_sum, l2_sum = 0., 0., 0.
+		for i in range(val_size
