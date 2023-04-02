@@ -199,4 +199,6 @@ for epoch in range(n_epochs):
 			loss_r_val_sum += loss_r_val
 			l1_sum += l1
 			l2_sum += l2
-		ValLoss = loss_r_va
+		ValLoss = loss_r_val_sum / val_size
+		MAE = l1_sum / val_size
+		RMSE = np.sq
