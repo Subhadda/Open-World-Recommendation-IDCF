@@ -196,3 +196,7 @@ for epoch in range(n_epochs):
 		loss_r_val_sum, l1_sum, l2_sum = 0., 0., 0.
 		for i in range(val_size // BATCH_SIZE_TEST + 1):
 			loss_r_val, l1, l2 = test(model, val_set, i)
+			loss_r_val_sum += loss_r_val
+			l1_sum += l1
+			l2_sum += l2
+		ValLoss = loss_r_va
