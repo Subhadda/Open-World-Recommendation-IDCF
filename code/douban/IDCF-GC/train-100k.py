@@ -202,4 +202,5 @@ for epoch in range(n_epochs):
 		ValLoss = loss_r_val_sum / val_size
 		MAE = l1_sum / val_size
 		RMSE = np.sqrt( l2_sum / val_size )
-		print('TestLoss: {:.4f} MAE: {:.4
+		print('TestLoss: {:.4f} MAE: {:.4f} RMSE: {:.4f}'.format(ValLoss, MAE, RMSE))
+		if RMSE < best
