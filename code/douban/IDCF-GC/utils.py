@@ -66,3 +66,49 @@ def generate_data(datadir, dataset='ml-1m', split_way='threshold', threshold=50,
                 test_set_supp_u = []
                 for index, i in enumerate(test_ui_dic[u]):
                     test_set_supp.append([u, i, test_ur_dic[u][index]])
+                user_supp_num += 1
+                user_supp_list.append(u)
+            else:
+                for index, i in enumerate(train_ui_dic[u]):
+                    train_set_que.append([u, i, train_ur_dic[u][index]])
+                test_set_que_u = []
+                for index, i in enumerate(test_ui_dic[u]):
+                    test_set_que.append([u, i, test_ur_dic[u][index]])
+                user_que_num += 1
+    
+    if split_way == 'random':
+        for u in train_ui_dic.keys():
+            r = random.uniform(0, 1)
+            if r <= supp_ratio:
+                for index, i in enumerate(train_ui_dic[u]):
+                    train_set_supp.append([u, i, train_ur_dic[u][index]])
+                test_set_supp_u = []
+                for index, i in enumerate(test_ui_dic[u]):
+                    test_set_supp.append([u, i, test_ur_dic[u][index]])
+                user_supp_num += 1
+                user_supp_list.append(u)
+            else:
+                for index, i in enumerate(train_ui_dic[u]):
+                    train_set_que.append([u, i, train_ur_dic[u][index]])
+                test_set_que_u = []
+                for index, i in enumerate(test_ui_dic[u]):
+                    test_set_que.append([u, i, test_ur_dic[u][index]])
+                user_que_num += 1
+
+    if split_way == 'all':
+        for u in train_ui_dic.keys():
+            num = len(train_ui_dic[u])
+            if num >= threshold:
+                for index, i in enumerate(train_ui_dic[u]):
+                    train_set_supp.append([u, i, train_ur_dic[u][index]])
+                test_set_supp_u = []
+                for index, i in enumerate(test_ui_dic[u]):
+                    test_set_supp.append([u, i, test_ur_dic[u][index]])
+                user_supp_num += 1
+                user_supp_list.append(u)
+            else:
+                for index, i in enumerate(train_ui_dic[u]):
+                    train_set_que.append([u, i, train_ur_dic[u][index]])
+                test_set_que_u = []
+                for index, i in enumerate(test_ui_dic[u]):
+                    test_set_que.append([u, i, test_ur_dic[u][index]])
