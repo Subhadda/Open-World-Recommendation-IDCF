@@ -10,4 +10,9 @@ douban:
 
 yahoo:
   n_item: 3000
-  n_use
+  n_user: 3000
+  n_rating: 100
+
+ml-100k:
+  n_item:  1682
+  n_
