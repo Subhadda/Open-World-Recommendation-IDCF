@@ -96,3 +96,55 @@ def train(model, optimizer, i, supp_or_que):
 		train_set_que_i = train_set_que[i*BATCH_SIZE_TRAIN : (i+1)*BATCH_SIZE_TRAIN]
 		train_set_i_x = train_set_que_i[:, :2].long().to(device)
 		train_set_i_y = train_set_que_i[:, 2].float().to(device)
+		train_set_his_i = [torch.tensor(
+		sequence_adjust( user_his_dic[train_set_que_i[k][0].item()] ),
+		dtype = torch.long
+		)   for k in range(train_set_que_i.size(0))]
+		train_set_hl_i = [train_set_his_i[k].size(0) for k in range(train_set_que_i.size(0))]
+		train_set_his_i = torch.nn.utils.rnn.pad_sequence(train_set_his_i, batch_first = True, padding_value = 0.).to(device)
+		train_set_hl_i = torch.tensor(train_set_hl_i, dtype=torch.long).to(device)
+		pred_y = model(train_set_i_x, train_set_his_i, train_set_hl_i)
+		loss = torch.sum((train_set_i_y - pred_y) ** 2)
+		
+	loss.backward()
+
+def test(model, test_set, supp_or_que):
+	model.eval()
+	l1_sum, l2_sum, ndcg_sum, num = 0., 0., 0., 0
+	test_size = test_set.size(0)
+	user_score_dict, user_label_dict = {}, {}
+	for k in user_his_dic.keys():
+		user_score_dict[k] = []
+		user_label_dict[k] = []
+	for i in range(test_size // BATCH_SIZE_TEST + 1):
+		with torch.no_grad():
+			test_set_i = test_set[i*BATCH_SIZE_TEST : (i+1)*BATCH_SIZE_TEST]
+			test_set_i_x = test_set_i[:, :2].long().to(device)
+			test_set_i_y = test_set_i[:, 2].float().to(device)
+			test_set_his_i = [torch.tensor(
+				sequence_adjust( user_his_dic[test_set_i[k][0].item()] ),
+				dtype = torch.long
+				)   for k in range(test_set_i.size(0))]
+			test_set_hl_i = [test_set_his_i[k].size(0) for k in range(test_set_i.size(0))]
+			test_set_his_i = torch.nn.utils.rnn.pad_sequence(test_set_his_i, batch_first = True, padding_value = 0.).to(device)
+			test_set_hl_i = torch.tensor(test_set_hl_i, dtype=torch.long).to(device)
+
+			if supp_or_que == 'supp':
+				pred_y = model(test_set_i_x)
+			else:
+				pred_y = model(test_set_i_x, test_set_his_i, test_set_hl_i)
+		y_hat, y = pred_y.cpu().numpy(), test_set_i_y.cpu().numpy()
+		l1_sum += np.sum( np.abs(y_hat - y) )
+		l2_sum += np.sum( np.square(y_hat - y) )
+		for k in range(test_set_i.size(0)):
+			u, s, y = test_set_i_x[k, 0].item(), pred_y[k].item(), test_set_i_y[k].item()
+			user_score_dict[u] += [s]
+			user_label_dict[u] += [y]
+	MAE = l1_sum / test_size
+	RMSE = np.sqrt( l2_sum / test_size )
+	for k in user_score_dict.keys():
+		if len(user_score_dict[k]) <= 1:
+			continue
+		ndcg_sum += ndcg_k(user_score_dict[k], user_label_dict[k], len(user_score_dict[k]))
+		num += 1
+	return MAE, RMSE, ndcg_sum, num
