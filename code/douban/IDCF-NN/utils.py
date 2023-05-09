@@ -113,3 +113,43 @@ def generate_data(datadir, dataset='ml-1m', split_way='threshold', threshold=50,
                 for index, i in enumerate(test_ui_dic[u]):
                     test_set_que.append([u, i, test_ur_dic[u][index]])
                 user_que_num += 1
+                user_supp_list.append(u)
+    
+    user_his_dic = {}
+    for u in train_ui_dic.keys():
+        user_his_dic[u] = train_ui_dic[u]
+
+
+
+    print("-------Dataset Info--------")
+    if split_way == 'threshold':
+        print("split way [threshold] with threshold {} training_ratio {}".format(threshold, training_ratio))
+    if split_way == 'random':
+        print("split way [random] with supp_ratio {} training_ratio {}".format(supp_ratio, training_ratio))
+    if split_way == 'all':
+        print("split way [all] with threshold {} training_ratio {}".format(threshold, training_ratio))
+    print("support user {}, query user {}".format(user_supp_num, user_que_num))
+    print("train set size: support/query {}/{}".format(len(train_set_supp), len(train_set_que)))
+    print("test set size: support/query {}/{}".format(len(test_set_supp), len(test_set_que)))
+
+    return train_set_supp, train_set_que, test_set_supp, test_set_que, user_supp_list, user_his_dic
+
+def dcg_k(score_label, k):
+    dcg, i = 0., 0
+    for s in score_label:
+        if i < k:
+            dcg += (2**s[1]-1) / np.log2(2+i)
+            i += 1
+    return dcg
+
+def ndcg_k(y_hat, y, k):
+    score_label = np.stack([y_hat, y], axis=1).tolist()
+    score_label = sorted(score_label, key=lambda d:d[0], reverse=True)
+    score_label_ = sorted(score_label, key=lambda d:d[1], reverse=True)
+    norm, i = 0., 0
+    for s in score_label_:
+        if i < k:
+            norm += (2**s[1]-1) / np.log2(2+i)
+            i += 1
+    dcg = dcg_k(score_label, k)
+    return dcg / norm
