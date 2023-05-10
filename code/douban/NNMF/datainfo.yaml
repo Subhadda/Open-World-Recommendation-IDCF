@@ -6,4 +6,12 @@ flixster:
 douban:
   n_item: 3000
   n_user: 3000
-  n_r
+  n_rating: 5
+
+yahoo:
+  n_item: 3000
+  n_user: 3000
+  n_rating: 100
+
+ml-100k:
+ 
