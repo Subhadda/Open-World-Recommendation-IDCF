@@ -14,4 +14,6 @@ yahoo:
   n_rating: 100
 
 ml-100k:
- 
+  n_item:  1682
+  n_user: 943
+  n_rating: 5
