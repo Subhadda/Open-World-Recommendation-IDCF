@@ -1,0 +1,23 @@
+
+import os
+import time
+import random
+import pickle
+import numpy as np
+import pandas as pd
+import argparse
+import yaml
+from model import NNMFModel
+from utils import *
+from datetime import datetime
+import torch
+
+def fix_seed(seed):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+#fix_seed(1234)
+
+parser = argparse.ArgumentParser(description='PMF')
