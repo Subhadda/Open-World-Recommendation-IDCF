@@ -25,3 +25,55 @@ def generate_data(datadir, dataset='ml-1m', split_way='threshold', threshold=50,
     
     index = [i for i in range(len(u))]
     random.shuffle(index)
+    train_index, test_index = index[:int(0.9*len(u))], index[int(0.9*len(u)):]
+    
+
+    train_ui_dic = {}
+    train_ur_dic = {}
+
+    test_ui_dic = {}
+    test_ur_dic = {}
+
+    for user in range(n_user):
+        train_ui_dic[user] = []
+        train_ur_dic[user] = []
+        test_ui_dic[user] = []
+        test_ur_dic[user] = []
+
+    
+    for k in range(len(train_u)):
+        train_ui_dic[train_u[k]].append(train_i[k])
+        train_ur_dic[train_u[k]].append(train_r[k])
+
+    for k in range(len(test_u)):
+        test_ui_dic[test_u[k]].append(test_i[k])
+        test_ur_dic[test_u[k]].append(test_r[k])
+
+    user_supp_num, user_que_num = 0, 0
+    train_set_supp, test_set_supp = [], []
+    train_set_que, test_set_que = [], []
+    test_set_supp_size, test_set_que_size = 0, 0
+
+    if split_way == 'threshold':
+        for u in train_ui_dic.keys():
+            num = len(train_ui_dic[u])
+            if num >= threshold:
+                for index, i in enumerate(train_ui_dic[u]):
+                    train_set_supp.append([u, i, train_ur_dic[u][index]])
+                test_set_supp_u = []
+                for index, i in enumerate(test_ui_dic[u]):
+                    test_set_supp.append([u, i, test_ur_dic[u][index]])
+                user_supp_num += 1
+            else:
+                for index, i in enumerate(train_ui_dic[u]):
+                    train_set_que.append([u, i, train_ur_dic[u][index]])
+                test_set_que_u = []
+                for index, i in enumerate(test_ui_dic[u]):
+                    test_set_que.append([u, i, test_ur_dic[u][index]])
+                user_que_num += 1
+    
+    if split_way == 'random':
+        for u in train_ui_dic.keys():
+            r = random.uniform(0, 1)
+            if r <= supp_ratio:
+                for index, i in enumerate(train_ui_dic[u]):
