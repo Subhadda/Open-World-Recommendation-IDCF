@@ -5,4 +5,6 @@ import numpy as np
 
 random.seed(1234)
 
-config = yaml.saf
+config = yaml.safe_load(open("./datainfo.yaml", 'r'))
+
+def generate_
