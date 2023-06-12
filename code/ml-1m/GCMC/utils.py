@@ -14,4 +14,6 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
     with open (datadir+dataset+'.pkl','rb') as f:  
         u = pickle.load(f)
         i = pickle.load(f)
-        r = pickle.load(f
+        r = pickle.load(f)
+        train_u = pickle.load(f)
+        train_i = pickle.load(f)
