@@ -12,4 +12,6 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
     n_item = config[dataset]['n_item']
     n_rating = config[dataset]['n_rating']
     with open (datadir+dataset+'.pkl','rb') as f:  
-        u = p
+        u = pickle.load(f)
+        i = pickle.load(f)
+        r = pickle.load(f
