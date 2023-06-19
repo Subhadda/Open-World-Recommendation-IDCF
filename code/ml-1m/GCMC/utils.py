@@ -18,4 +18,6 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
         train_u = pickle.load(f)
         train_i = pickle.load(f)
         train_r = pickle.load(f)
-        test_u = pickl
+        test_u = pickle.load(f)
+        test_i = pickle.load(f)
+        test_r = pickle.l
