@@ -23,4 +23,5 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
         test_r = pickle.load(f)
 
     index = [i for i in range(len(u))]
-    random.shu
+    random.shuffle(index)
+    train_index, test_index = index[:int(trainin
