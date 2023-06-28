@@ -39,4 +39,5 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
         test_ur_dic[user] = []
     
     for index in train_index:
-       
+        train_ui_dic[u[index]].append(i[index])
+        train_u
