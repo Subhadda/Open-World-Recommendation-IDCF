@@ -53,4 +53,6 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
 
     for u in train_ui_dic.keys():
         num = len(train_ui_dic[u])
-        if num >= thres
+        if num >= threshold:
+            for index, i in enumerate(train_ui_dic[u]):
+      
