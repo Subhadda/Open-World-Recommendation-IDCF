@@ -57,4 +57,5 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
             for index, i in enumerate(train_ui_dic[u]):
                 train_set_supp.append([u, i, train_ur_dic[u][index]])
             test_set_supp_u = []
-            f
+            for index, i in enumerate(test_ui_dic[u]):
+            
