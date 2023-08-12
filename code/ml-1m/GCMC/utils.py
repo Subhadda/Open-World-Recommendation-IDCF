@@ -62,4 +62,4 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
             user_supp_num += 1
         else:
             for index, i in enumerate(train_ui_dic[u]):
-                trai
+                train_set_que.append([u, i, train_ur_dic[u][index]])
