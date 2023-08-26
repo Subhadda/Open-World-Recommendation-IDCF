@@ -68,3 +68,6 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
                 test_set_que.append([u, i, test_ur_dic[u][index]])
             user_que_num += 1
                 
+    user_his_dic = {}
+    for u in train_ui_dic.keys():
+        
