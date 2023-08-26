@@ -70,4 +70,6 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
                 
     user_his_dic = {}
     for u in train_ui_dic.keys():
-        
+        user_his_dic[u] = train_ui_dic[u]
+
+    train_u, trai
