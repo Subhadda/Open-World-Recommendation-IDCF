@@ -74,4 +74,5 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
 
     train_u, train_i, train_r = [], [], []
     for u in range(n_user):
-    
+        ui_list = train_ui_dic[u]
+        ur_list = train_ur_dic[u
