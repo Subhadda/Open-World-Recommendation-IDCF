@@ -79,4 +79,6 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
         item_num = len(ui_list)
         if item_num <= 0:
             continue
-        train_u += [u for i in ra
+        train_u += [u for i in range(item_num)]
+        train_i += ui_list
+        train_r += ur
