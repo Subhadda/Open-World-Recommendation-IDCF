@@ -83,4 +83,7 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
         train_i += ui_list
         train_r += ur_list
     
-    edge_array = np.array([train_u, train_i, train_r], d
+    edge_array = np.array([train_u, train_i, train_r], dtype=np.int32)
+    edge_UI = []
+    
+    for i in range(1
