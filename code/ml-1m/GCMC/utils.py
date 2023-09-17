@@ -86,4 +86,6 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
     edge_array = np.array([train_u, train_i, train_r], dtype=np.int32)
     edge_UI = []
     
-    for i in range(1
+    for i in range(1, n_rating+1):
+        if sample_graph:
+            edge_i = edge_arr
