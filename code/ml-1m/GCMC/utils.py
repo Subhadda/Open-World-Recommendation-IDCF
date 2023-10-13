@@ -88,4 +88,5 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
     
     for i in range(1, n_rating+1):
         if sample_graph:
-            edge_i = edge_arr
+            edge_i = edge_array[:2, edge_array[2]==i]
+            edge_UI.append(
