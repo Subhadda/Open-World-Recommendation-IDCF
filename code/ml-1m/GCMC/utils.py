@@ -91,4 +91,5 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
             edge_i = edge_array[:2, edge_array[2]==i]
             edge_UI.append(edge_i)
         else:
-            edge_i = edge_array[:2, edge_arr
+            edge_i = edge_array[:2, edge_array[2]==i]
+            edge_UI_i = np.zeros((n_use
