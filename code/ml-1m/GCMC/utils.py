@@ -98,4 +98,5 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
 
     
 
-    print("-------D
+    print("-------Dataset Info--------")
+    print("split way [all] with trainin
