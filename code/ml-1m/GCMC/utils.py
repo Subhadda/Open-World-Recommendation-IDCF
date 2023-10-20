@@ -105,4 +105,4 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
     print("test set size: support/query {}/{}".format(len(test_set_supp), len(test_set_que)))
 
     if sample_graph:
-        return train_set_s
+        return train_set_supp, train_set_que, test_set_supp, test_set_que, user_his_
