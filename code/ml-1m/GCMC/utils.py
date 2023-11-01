@@ -107,4 +107,5 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1, samp
     if sample_graph:
         return train_set_supp, train_set_que, test_set_supp, test_set_que, user_his_dic, edge_array
     else:
-        return train_set_supp,
+        return train_set_supp, train_set_que, test_set_supp, test_set_que, user_his_dic, edge_UI
+
