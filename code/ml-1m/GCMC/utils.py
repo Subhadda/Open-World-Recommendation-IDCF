@@ -117,4 +117,5 @@ def dcg_k(score_label, k):
             i += 1
     return dcg
 
-def ndcg_k(y_hat, y, k)
+def ndcg_k(y_hat, y, k):
+    score_label = np.stack([y_hat, y], axis=1).tolist
