@@ -4,4 +4,5 @@ ml-1m:
   n_rating: 5
 ml-10m:
   n_item: 10677
-  n_user: 698
+  n_user: 69878
+  n_rating: 5
