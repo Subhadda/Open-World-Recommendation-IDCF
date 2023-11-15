@@ -31,3 +31,66 @@ os.environ["CUDA_VISIBLE_DEVICES"] = args.gpus
 device = torch.device('cuda')
 
 LEARNING_RATE = 0.001
+DECAYING_FACTOR = 1.
+LAMBDA_REG = 0.05
+BATCH_SIZE_TRAIN = 1024
+BATCH_SIZE_TEST = 1024
+HIS_MAXLEN = 100
+HIS_SAMPLE_NUM = 20
+n_epochs = 1 # 500
+
+DATASET = 'ml-1m'
+SPLIT_WAY = 'threshold'
+THRESHOLD = 30
+SUPP_RATIO = 0.8
+TRAINING_RATIO = 1
+EXTRA = args.extra
+datadir = '../../../data/'
+n_user = config[DATASET]['n_user']
+n_item = config[DATASET]['n_item']
+n_rating = config[DATASET]['n_rating']
+
+train_set_supp, train_set_que, test_set_supp, test_set_que, user_his_dic, user_supp_list, edge_UI = \
+generate_data(datadir=datadir, 
+				dataset=DATASET, 
+				split_way=SPLIT_WAY,
+				supp_ratio=SUPP_RATIO, 
+				threshold=THRESHOLD,
+				training_ratio=TRAINING_RATIO)
+
+user_supp_num = len(user_supp_list)
+user_que_num = n_user - user_supp_num
+
+if SPLIT_WAY == 'all':
+	train_set_supp = torch.tensor(train_set_supp + train_set_que)
+else:
+	train_set_supp = torch.tensor(train_set_supp)
+train_set_que = torch.tensor(train_set_que)
+test_set_supp = torch.tensor(test_set_supp)
+test_set_que = torch.tensor(test_set_que)
+supp_users = torch.tensor(user_supp_list, dtype = torch.long)
+edge_IU = []	
+for n in range(n_rating):
+	edge_UI[n] = torch.tensor(edge_UI[n])
+	edge_IU_n = edge_UI[n].transpose(1, 0).contiguous()
+	edge_IU.append(edge_IU_n)
+
+def sequence_adjust(seq):
+	seq_new = seq
+	if len(seq) <= 0:
+		seq_new = [np.random.randint(0, n_item) for i in range(HIS_SAMPLE_NUM)]
+	if len(seq) > HIS_MAXLEN:
+		random.shuffle(seq)
+		seq_new = seq[:HIS_MAXLEN]
+	return seq_new
+
+def train(model, optimizer, i, supp_or_que):
+	model.train()
+	optimizer.zero_grad()
+	
+	if supp_or_que == 'supp':
+		train_set_supp_i = train_set_supp[i*BATCH_SIZE_TRAIN : (i+1)*BATCH_SIZE_TRAIN]
+		train_set_supp_i_x = train_set_supp_i[:, :2].long().to(device)
+		train_set_supp_i_y = train_set_supp_i[:, 2].float().to(device)
+		edge_UI_i = [edge_UI[n][train_set_supp_i_x[:, 0]].to(device) for n in range(n_rating)]
+		edge_IU_i = [edge_IU[n][train_set_supp_i_x[:, 1]].to(device) for n in range(n_rating)]
