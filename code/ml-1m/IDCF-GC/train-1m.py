@@ -6,4 +6,6 @@ import numpy as np
 import pandas as pd
 import argparse
 import yaml
-from model import IRMC_GC_Mo
+from model import IRMC_GC_Model
+from utils import generate_data
+from datetime import dat
