@@ -12,4 +12,7 @@ from datetime import datetime
 import torch
 
 def fix_seed(seed):
-    random.seed(se
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.m
