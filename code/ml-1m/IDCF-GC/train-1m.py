@@ -19,4 +19,5 @@ def fix_seed(seed):
     torch.backends.cudnn.deterministic = True
 fix_seed(1234)
 
-parser = argparse.ArgumentPa
+parser = argparse.ArgumentParser(description='PMF')
+parser.add_argument('--gpus',
