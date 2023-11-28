@@ -37,4 +37,7 @@ HIS_MAXLEN = 100
 HIS_SAMPLE_NUM = 20
 n_epochs = 500 # 500
 
-DATA
+DATASET = 'ml-1m'
+SPLIT_WAY = 'threshold'
+EXTRA = False
+THRESH
