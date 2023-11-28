@@ -40,4 +40,7 @@ n_epochs = 500 # 500
 DATASET = 'ml-1m'
 SPLIT_WAY = 'threshold'
 EXTRA = False
-THRESH
+THRESHOLD = 30
+SUPP_RATIO = 0.8
+TRAINING_RATIO = 1
+datadir = '..
