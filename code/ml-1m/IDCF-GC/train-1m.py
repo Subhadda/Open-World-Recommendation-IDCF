@@ -50,4 +50,6 @@ n_rating = config[DATASET]['n_rating']
 
 train_set_supp, train_set_que, test_set_supp, test_set_que, user_his_dic, user_supp_list, edge_UI = \
 generate_data(datadir=datadir, 
-				d
+				dataset=DATASET, 
+				split_way=SPLIT_WAY,
+				sup
