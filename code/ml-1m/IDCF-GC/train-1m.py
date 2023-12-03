@@ -52,4 +52,6 @@ train_set_supp, train_set_que, test_set_supp, test_set_que, user_his_dic, user_s
 generate_data(datadir=datadir, 
 				dataset=DATASET, 
 				split_way=SPLIT_WAY,
-				sup
+				supp_ratio=SUPP_RATIO, 
+				threshold=THRESHOLD,
+				training_r
