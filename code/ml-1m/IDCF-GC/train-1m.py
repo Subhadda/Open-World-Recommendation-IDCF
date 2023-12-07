@@ -64,4 +64,5 @@ else:
 test_set = torch.tensor(test_set_que)
 edge_IU = []	
 for n in range(n_rating):
-	edge
+	edge_UI[n] = torch.tensor(edge_UI[n])
+	edge_IU_n = ed
