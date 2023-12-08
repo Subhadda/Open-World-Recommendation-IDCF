@@ -70,4 +70,6 @@ for n in range(n_rating):
 
 train_set = train_set[torch.randperm(train_set.size(0))]
 val_set = train_set[int(0.95*train_set.size(0)):]
-train_set = train
+train_set = train_set[:int(0.95*train_set.size(0))]
+
+def sequence_adjust(
