@@ -85,4 +85,7 @@ def train(model, optimizer, i):
 	model.train()
 	optimizer.zero_grad()
 	
-	train_set_que_i = train_set[i*BATCH_SIZE_TRAIN : (i+1)*BATCH_SIZE_TRAI
+	train_set_que_i = train_set[i*BATCH_SIZE_TRAIN : (i+1)*BATCH_SIZE_TRAIN]
+	
+	train_set_i_x = train_set_que_i[:, :2].long().to(device)
+	train
