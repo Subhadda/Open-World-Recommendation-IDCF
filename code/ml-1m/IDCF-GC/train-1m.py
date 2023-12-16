@@ -99,4 +99,6 @@ def train(model, optimizer, i):
 	edge_UI_i = [edge_UI[n][train_set_i_x[:, 0]].to(device) for n in range(n_rating)]
 	edge_IU_i = [edge_IU[n][train_set_i_x[:, 1]].to(device) for n in range(n_rating)]
 	if EXTRA:
-		pred_y, user_emb_ind, user_emb_trd = model(train_set_i_x, train_set_his_i, train_set_hl_i, edge_UI_i, edge_IU_i, mode='EX
+		pred_y, user_emb_ind, user_emb_trd = model(train_set_i_x, train_set_his_i, train_set_hl_i, edge_UI_i, edge_IU_i, mode='EXTRA')
+		loss = torch.sum((train_set_i_y - pred_y) ** 2)
+		user_em
