@@ -117,4 +117,5 @@ def train(model, optimizer, i):
 
 def test(model, test_set, i):
 	model.eval()
-	with torch.no_grad
+	with torch.no_grad():
+		test_set_i = test_set[i*BATCH_SIZE_TEST : (i+1)*BATCH_SIZE_
