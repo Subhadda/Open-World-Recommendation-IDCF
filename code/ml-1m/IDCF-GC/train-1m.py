@@ -128,4 +128,5 @@ def test(model, test_set, i):
 		test_set_hl_i = [test_set_his_i[k].size(0) for k in range(test_set_i.size(0))]
 		test_set_his_i = torch.nn.utils.rnn.pad_sequence(test_set_his_i, batch_first = True, padding_value = 0.).to(device)
 		test_set_hl_i = torch.tensor(test_set_hl_i, dtype=torch.long).to(device)
-		edge_UI_i = [edge_UI[n][test_set_i_x[:, 0]].to(dev
+		edge_UI_i = [edge_UI[n][test_set_i_x[:, 0]].to(device) for n in range(n_rating)]
+		edge_IU_i = [edge_IU[n][test_set_
