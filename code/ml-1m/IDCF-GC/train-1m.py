@@ -132,4 +132,5 @@ def test(model, test_set, i):
 		edge_IU_i = [edge_IU[n][test_set_i_x[:, 1]].to(device) for n in range(n_rating)]
 
 		pred_y = model(test_set_i_x, test_set_his_i, test_set_hl_i, edge_UI_i, edge_IU_i)
-		l
+		loss_r = torch.sum((test_set_i_y - pred_y) ** 2)
+	y_hat, y = 
