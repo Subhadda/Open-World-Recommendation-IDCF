@@ -147,3 +147,5 @@ def save_model(model, path):
 
 def load_model(model, path):
 	model.load_embedding_nn(path+'model.pkl')
+
+train_size, val_size, test_size = train_set.size(0), val_se
