@@ -145,4 +145,5 @@ def save_model(model, path):
 	else:
 		torch.save(model.state_dict(), path+'model-inter.pkl')
 
-def load_model(model
+def load_model(model, path):
+	model.load_embedding_nn(path+'model.pkl')
