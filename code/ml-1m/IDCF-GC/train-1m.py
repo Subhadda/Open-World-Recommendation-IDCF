@@ -149,4 +149,7 @@ def load_model(model, path):
 	model.load_embedding_nn(path+'model.pkl')
 
 train_size, val_size, test_size = train_set.size(0), val_set.size(0), test_set.size(0)
-n_iter = n_epochs * train_size // BATCH
+n_iter = n_epochs * train_size // BATCH_SIZE_TRAIN
+bestRMSE = 10.0
+
+model = IRMC_GC_Mo
