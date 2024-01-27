@@ -156,4 +156,6 @@ model = IRMC_GC_Model(n_user = n_user,
 				n_item = n_item, 
 				n_rating = n_rating,
 				supp_users = supp_users, 
-				device = de
+				device = device).to(device)
+load_model(model, './pretrain-1m/')
+optimize
