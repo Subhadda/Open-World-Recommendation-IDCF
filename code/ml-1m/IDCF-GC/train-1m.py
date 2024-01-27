@@ -154,4 +154,6 @@ bestRMSE = 10.0
 
 model = IRMC_GC_Model(n_user = n_user, 
 				n_item = n_item, 
-				n_ratin
+				n_rating = n_rating,
+				supp_users = supp_users, 
+				device = de
