@@ -165,4 +165,6 @@ for epoch in range(n_epochs):
 	train_set = train_set[torch.randperm(train_size)]
 	loss_r_sum = 0.
 	for i in range(train_size // BATCH_SIZE_TRAIN + 1):
-		loss_r = train(model, optimizer, 
+		loss_r = train(model, optimizer, i)
+		loss_r_sum += loss_r
+	loss_r_train = loss_r_sum / t
