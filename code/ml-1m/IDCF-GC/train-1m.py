@@ -162,4 +162,6 @@ optimizer = torch.optim.Adam( filter(lambda p: p.requires_grad, model.parameters
 scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=DECAYING_FACTOR)
 start_time = datetime.now()
 for epoch in range(n_epochs):
-	train_set = train_set[torch.randperm(train_
+	train_set = train_set[torch.randperm(train_size)]
+	loss_r_sum = 0.
+	for i in range(train_size // B
