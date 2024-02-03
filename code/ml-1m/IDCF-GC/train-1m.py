@@ -168,4 +168,5 @@ for epoch in range(n_epochs):
 		loss_r = train(model, optimizer, i)
 		loss_r_sum += loss_r
 	loss_r_train = loss_r_sum / train_size
-	cost_time = str((datetime.now() - start_time) / (epoch
+	cost_time = str((datetime.now() - start_time) / (epoch+1) * (n_epochs - epoch)).split('.')[0]
+	print('Epoch {}: Train
