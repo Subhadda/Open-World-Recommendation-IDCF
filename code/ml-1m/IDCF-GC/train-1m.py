@@ -167,4 +167,5 @@ for epoch in range(n_epochs):
 	for i in range(train_size // BATCH_SIZE_TRAIN + 1):
 		loss_r = train(model, optimizer, i)
 		loss_r_sum += loss_r
-	loss_r_train = loss_r_sum / t
+	loss_r_train = loss_r_sum / train_size
+	cost_time = str((datetime.now() - start_time) / (epoch
