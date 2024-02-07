@@ -169,4 +169,7 @@ for epoch in range(n_epochs):
 		loss_r_sum += loss_r
 	loss_r_train = loss_r_sum / train_size
 	cost_time = str((datetime.now() - start_time) / (epoch+1) * (n_epochs - epoch)).split('.')[0]
-	print('Epoch {}: TrainLoss {:.4f} (left: {})'.format(epoch, loss_r_train, cost_time)
+	print('Epoch {}: TrainLoss {:.4f} (left: {})'.format(epoch, loss_r_train, cost_time))
+	scheduler.step()
+
+	loss_r_test_sum, l1_sum, l2_sum 
