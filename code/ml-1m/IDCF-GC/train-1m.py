@@ -183,4 +183,5 @@ for epoch in range(n_epochs):
 	RMSE = np.sqrt( l2_sum / test_size )
 	print('TestLoss: {:.4f} MAE: {:.4f} RMSE: {:.4f}'.format(TestLoss, MAE, RMSE))
 
-	loss_r_val_sum, l1_sum, l2_sum = 
+	loss_r_val_sum, l1_sum, l2_sum = 0., 0., 0.
+	for i in range(val_size // BATCH_SIZE_TEST + 1):
