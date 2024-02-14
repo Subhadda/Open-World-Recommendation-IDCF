@@ -191,3 +191,5 @@ for epoch in range(n_epochs):
 		l2_sum += l2
 	ValLoss = loss_r_val_sum / val_size
 	MAE = l1_sum / val_size
+	RMSE = np.sqrt(l2_sum / val_size)
+	print('ValLoss: {:.4f} M
