@@ -193,4 +193,6 @@ for epoch in range(n_epochs):
 	MAE = l1_sum / val_size
 	RMSE = np.sqrt(l2_sum / val_size)
 	print('ValLoss: {:.4f} MAE: {:.4f} RMSE: {:.4f}'.format(ValLoss, MAE, RMSE))
-	if 
+	if RMSE < bestRMSE:
+		bestRMSE = RMSE
+		save_model(model, './train-1m
