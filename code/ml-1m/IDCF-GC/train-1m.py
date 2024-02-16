@@ -195,4 +195,4 @@ for epoch in range(n_epochs):
 	print('ValLoss: {:.4f} MAE: {:.4f} RMSE: {:.4f}'.format(ValLoss, MAE, RMSE))
 	if RMSE < bestRMSE:
 		bestRMSE = RMSE
-		save_model(model, './train-1m
+		save_model(model, './train-1m/')
