@@ -68,3 +68,62 @@ def generate_data(datadir, dataset='ml-1m', split_way='threshold', threshold=50,
             else:
                 for index, i in enumerate(train_ui_dic[u]):
                     train_set_que.append([u, i, train_ur_dic[u][index]])
+                test_set_que_u = []
+                for index, i in enumerate(test_ui_dic[u]):
+                    test_set_que.append([u, i, test_ur_dic[u][index]])
+                user_que_num += 1
+    
+    if split_way == 'random':
+        for u in train_ui_dic.keys():
+            r = random.uniform(0, 1)
+            if r <= supp_ratio:
+                for index, i in enumerate(train_ui_dic[u]):
+                    train_set_supp.append([u, i, train_ur_dic[u][index]])
+                test_set_supp_u = []
+                for index, i in enumerate(test_ui_dic[u]):
+                    test_set_supp.append([u, i, test_ur_dic[u][index]])
+                user_supp_num += 1
+                user_supp_list.append(u)
+            else:
+                for index, i in enumerate(train_ui_dic[u]):
+                    train_set_que.append([u, i, train_ur_dic[u][index]])
+                test_set_que_u = []
+                for index, i in enumerate(test_ui_dic[u]):
+                    test_set_que.append([u, i, test_ur_dic[u][index]])
+                user_que_num += 1
+
+    if split_way == 'all':
+        for u in train_ui_dic.keys():
+            num = len(train_ui_dic[u])
+            if num >= threshold:
+                for index, i in enumerate(train_ui_dic[u]):
+                    train_set_supp.append([u, i, train_ur_dic[u][index]])
+                test_set_supp_u = []
+                for index, i in enumerate(test_ui_dic[u]):
+                    test_set_supp.append([u, i, test_ur_dic[u][index]])
+                user_supp_num += 1
+                user_supp_list.append(u)
+            else:
+                for index, i in enumerate(train_ui_dic[u]):
+                    train_set_que.append([u, i, train_ur_dic[u][index]])
+                test_set_que_u = []
+                for index, i in enumerate(test_ui_dic[u]):
+                    test_set_que.append([u, i, test_ur_dic[u][index]])
+                user_que_num += 1
+                user_supp_list.append(u)
+
+    user_his_dic = {}
+    for u in train_ui_dic.keys():
+        user_his_dic[u] = train_ui_dic[u]
+
+    train_u, train_i, train_r = [], [], []
+    for u in range(n_user):
+        ui_list = train_ui_dic[u]
+        ur_list = train_ur_dic[u] 
+        item_num = len(ui_list)
+        if item_num <= 0:
+            continue
+        train_u += [u for i in range(item_num)]
+        train_i += ui_list
+        train_r += ur_list
+    
