@@ -59,3 +59,69 @@ generate_data(datadir=datadir,
 
 user_supp_num = len(user_supp_list)
 user_que_num = n_user - user_supp_num
+
+supp_users = torch.tensor(user_supp_list, dtype = torch.long)
+supp_users_mask = torch.zeros(n_user)
+supp_users_mask[supp_users] = 1
+if SPLIT_WAY == 'all':
+	train_set_supp = torch.tensor(train_set_supp + train_set_que)
+else:
+	train_set_supp = torch.tensor(train_set_supp)
+train_set_que = torch.tensor(train_set_que)
+test_set_supp = torch.tensor(test_set_supp)
+test_set_que = torch.tensor(test_set_que)
+
+def sequence_adjust(seq):
+	seq_new = seq
+	if len(seq) <= 0:
+		seq_new = [np.random.randint(0, n_item) for i in range(HIS_SAMPLE_NUM)]
+	if len(seq) > HIS_MAXLEN:
+		random.shuffle(seq)
+		seq_new = seq[:HIS_MAXLEN]
+	return seq_new
+
+def train(model, optimizer, i, supp_or_que):
+	model.train()
+	optimizer.zero_grad()
+	
+	if supp_or_que == 'supp':
+		train_set_supp_i = train_set_supp[i*BATCH_SIZE_TRAIN : (i+1)*BATCH_SIZE_TRAIN]
+		train_set_supp_i_x = train_set_supp_i[:, :2].long().to(device)
+		train_set_supp_i_y = train_set_supp_i[:, 2].float().to(device)
+		pred_y = model(train_set_supp_i_x)
+		loss_r = torch.sum((train_set_supp_i_y - pred_y) ** 2)
+		loss_reg = model.regularization_loss()
+		loss = loss_r + LAMBDA_REG * loss_reg
+	else:
+		train_set_que_i = train_set_que[i*BATCH_SIZE_TRAIN : (i+1)*BATCH_SIZE_TRAIN]
+		train_set_i_x = train_set_que_i[:, :2].long().to(device)
+		train_set_i_y = train_set_que_i[:, 2].float().to(device)
+		train_set_his_i = [torch.tensor(
+		sequence_adjust( user_his_dic[train_set_que_i[k][0].item()] ),
+		dtype = torch.long
+		)   for k in range(train_set_que_i.size(0))]
+		train_set_hl_i = [train_set_his_i[k].size(0) for k in range(train_set_que_i.size(0))]
+		train_set_his_i = torch.nn.utils.rnn.pad_sequence(train_set_his_i, batch_first = True, padding_value = 0.).to(device)
+		train_set_hl_i = torch.tensor(train_set_hl_i, dtype=torch.long).to(device)
+		pred_y = model(train_set_i_x, train_set_his_i, train_set_hl_i)
+		loss = torch.sum((train_set_i_y - pred_y) ** 2)
+		
+	loss.backward()
+
+def test(model, test_set, supp_or_que):
+	model.eval()
+	l1_sum, l2_sum, ndcg_sum, num = 0., 0., 0., 0
+	test_size = test_set.size(0)
+	user_score_dict, user_label_dict = {}, {}
+	for k in user_his_dic.keys():
+		user_score_dict[k] = []
+		user_label_dict[k] = []
+	for i in range(test_size // BATCH_SIZE_TEST + 1):
+		with torch.no_grad():
+			test_set_i = test_set[i*BATCH_SIZE_TEST : (i+1)*BATCH_SIZE_TEST]
+			test_set_i_x = test_set_i[:, :2].long().to(device)
+			test_set_i_y = test_set_i[:, 2].float().to(device)
+			test_set_his_i = [torch.tensor(
+				sequence_adjust( user_his_dic[test_set_i[k][0].item()] ),
+				dtype = torch.long
+				)   for k in range(test_set_i.size(0))]
