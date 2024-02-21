@@ -125,3 +125,54 @@ def test(model, test_set, supp_or_que):
 				sequence_adjust( user_his_dic[test_set_i[k][0].item()] ),
 				dtype = torch.long
 				)   for k in range(test_set_i.size(0))]
+			test_set_hl_i = [test_set_his_i[k].size(0) for k in range(test_set_i.size(0))]
+			test_set_his_i = torch.nn.utils.rnn.pad_sequence(test_set_his_i, batch_first = True, padding_value = 0.).to(device)
+			test_set_hl_i = torch.tensor(test_set_hl_i, dtype=torch.long).to(device)
+
+			if supp_or_que == 'supp':
+				pred_y = model(test_set_i_x)
+			else:
+				pred_y = model(test_set_i_x, test_set_his_i, test_set_hl_i)
+		y_hat, y = pred_y.cpu().numpy(), test_set_i_y.cpu().numpy()
+		l1_sum += np.sum( np.abs(y_hat - y) )
+		l2_sum += np.sum( np.square(y_hat - y) )
+		for k in range(test_set_i.size(0)):
+			u, s, y = test_set_i_x[k, 0].item(), pred_y[k].item(), test_set_i_y[k].item()
+			user_score_dict[u] += [s]
+			user_label_dict[u] += [y]
+	MAE = l1_sum / test_size
+	RMSE = np.sqrt( l2_sum / test_size )
+	for k in user_score_dict.keys():
+		if len(user_score_dict[k]) <= 1:
+			continue
+		ndcg_sum += ndcg_k(user_score_dict[k], user_label_dict[k], len(user_score_dict[k]))
+		num += 1
+	return MAE, RMSE, ndcg_sum, num
+
+def load_model_s(model, path):
+	model.load_model(path+'model.pkl')
+
+def load_model_q(model, path):
+	if EXTRA:
+		model.load_model(path + 'model-extra.pkl')
+	else:
+		model.load_model(path+'model-inter.pkl')
+
+if EXTRA:
+	model_q = IRMC_NN_Model(n_user=n_user,
+							n_item=n_item,
+							supp_users=supp_users,
+							device=device).to(device)
+	load_model_q(model_q, './train-1m/')
+	MAE_q, RMSE_q, ndcg_sum_q, num_q = test(model_q, test_set_que, supp_or_que='que')
+	NDCG_q = ndcg_sum_q / num_q
+	log = 'Que Test Result: MAE: {:.4f} RMSE: {:.4f} NDCG: {:.4f}'.format(MAE_q, RMSE_q, NDCG_q)
+	print(log)
+else:
+	model_s = NNMFModel(n_user = n_user,
+					n_item = n_item).to(device)
+	load_model_s(model_s, './pretrain-1m/')
+	MAE_s, RMSE_s, ndcg_sum_s, num_s = test(model_s, test_set_supp, supp_or_que='supp')
+	NDCG_s = ndcg_sum_s / num_s
+	log = 'Key Test Result: MAE: {:.4f} RMSE: {:.4f} NDCG: {:.4f}'.format(MAE_s, RMSE_s, NDCG_s)
+	print(log)
