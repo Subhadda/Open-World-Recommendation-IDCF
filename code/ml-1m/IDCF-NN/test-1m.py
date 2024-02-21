@@ -176,3 +176,20 @@ else:
 	NDCG_s = ndcg_sum_s / num_s
 	log = 'Key Test Result: MAE: {:.4f} RMSE: {:.4f} NDCG: {:.4f}'.format(MAE_s, RMSE_s, NDCG_s)
 	print(log)
+
+	model_q = IRMC_NN_Model(n_user = n_user,
+					n_item = n_item,
+					supp_users = supp_users,
+					device = device).to(device)
+	load_model_q(model_q, './train-1m/')
+	MAE_q, RMSE_q, ndcg_sum_q, num_q  = test(model_q, test_set_que, supp_or_que='que')
+	NDCG_q = ndcg_sum_q / num_q
+	log = 'Que Test Result: MAE: {:.4f} RMSE: {:.4f} NDCG: {:.4f}'.format(MAE_q, RMSE_q, NDCG_q)
+	print(log)
+
+	supp_size, que_size = test_set_supp.size(0), test_set_que.size(0)
+	MAE = ( MAE_s * supp_size + MAE_q * que_size )/ (supp_size+que_size)
+	RMSE = np.sqrt( (RMSE_s**2 * supp_size + RMSE_q**2 * que_size) / (supp_size+que_size))
+	NDCG = (ndcg_sum_q + ndcg_sum_s) / (num_q + num_s)
+	log = 'All Test Result: MAE: {:.4f} RMSE: {:.4f} NDCG: {:.4f}'.format(MAE, RMSE, NDCG)
+	print(log)
