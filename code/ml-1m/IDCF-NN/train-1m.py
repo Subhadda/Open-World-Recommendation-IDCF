@@ -34,3 +34,62 @@ DECAYING_FACTOR = 0.99 # EXTRA 0.95
 LAMBDA_REC = 1.
 BATCH_SIZE_TRAIN = 1024
 BATCH_SIZE_TEST = 1024
+HIS_MAXLEN = 100
+HIS_SAMPLE_NUM = 20
+n_epochs = 500 # 500
+
+DATASET = 'ml-1m'
+SPLIT_WAY = 'threshold'
+EXTRA = False
+THRESHOLD = 30
+SUPP_RATIO = 0.8
+TRAINING_RATIO = 1.0
+datadir = '../../../data/'
+n_user = config[DATASET]['n_user']
+n_item = config[DATASET]['n_item']
+
+train_set_supp, train_set_que, test_set_supp, test_set_que, user_supp_list, user_his_dic = \
+generate_data(datadir=datadir, 
+				dataset=DATASET, 
+				split_way=SPLIT_WAY,
+				supp_ratio=SUPP_RATIO, 
+				threshold=THRESHOLD,
+				training_ratio=TRAINING_RATIO)
+
+supp_users = torch.tensor(user_supp_list, dtype = torch.long)
+if EXTRA:
+	train_set = torch.tensor(train_set_supp)
+else:
+	train_set = torch.tensor(train_set_que)
+test_set = torch.tensor(test_set_que)
+
+train_set = train_set[torch.randperm(train_set.size(0))]
+val_set = train_set[int(0.95*train_set.size(0)):]
+train_set = train_set[:int(0.95*train_set.size(0))]
+
+def sequence_adjust(seq):
+	seq_new = seq
+	if len(seq) <= 0:
+		seq_new = [np.random.randint(0, n_item) for i in range(HIS_SAMPLE_NUM)]
+	if len(seq) > HIS_MAXLEN:
+		random.shuffle(seq)
+		seq_new = seq[:HIS_MAXLEN]
+	return seq_new
+
+def train(model, optimizer, i):
+	model.train()
+	optimizer.zero_grad()
+	
+	train_set_que_i = train_set[i*BATCH_SIZE_TRAIN : (i+1)*BATCH_SIZE_TRAIN]
+	
+	train_set_i_x = train_set_que_i[:, :2].long().to(device)
+	train_set_i_y = train_set_que_i[:, 2].float().to(device)
+	train_set_his_i = [torch.tensor(
+		sequence_adjust( user_his_dic[train_set_que_i[k][0].item()] ),
+		dtype = torch.long
+		)   for k in range(train_set_que_i.size(0))]
+	train_set_hl_i = [train_set_his_i[k].size(0) for k in range(train_set_que_i.size(0))]
+	train_set_his_i = torch.nn.utils.rnn.pad_sequence(train_set_his_i, batch_first = True, padding_value = 0.).to(device)
+	train_set_hl_i = torch.tensor(train_set_hl_i, dtype=torch.long).to(device)
+	if EXTRA:
+		pred_y, user_emb_ind, user_emb_trd = model(train_set_i_x, train_set_his_i, train_set_hl_i, mode='EXTRA')
