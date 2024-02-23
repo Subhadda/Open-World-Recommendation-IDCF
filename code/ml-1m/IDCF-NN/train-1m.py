@@ -162,3 +162,32 @@ for epoch in range(n_epochs):
 	loss_rec_train = loss_rec_sum / train_size
 	cost_time = str((datetime.now() - start_time) / (epoch+1) * (n_epochs - epoch)).split('.')[0]
 	print('Epoch {}: TrainLoss {:.4f} RecLoss: {:.4f} (left: {})'.format(epoch, loss_r_train, loss_rec_train, cost_time))
+	scheduler.step()
+
+	loss_r_test_sum, l1_sum, l2_sum = 0., 0., 0.
+	for i in range(test_size // BATCH_SIZE_TEST + 1):
+		loss_r_test, l1, l2 = test(model, test_set, i)
+		loss_r_test_sum += loss_r_test
+		l1_sum += l1
+		l2_sum += l2
+	TestLoss = loss_r_test_sum / test_size
+	MAE = l1_sum / test_size
+	RMSE = np.sqrt( l2_sum / test_size )
+	print('TestLoss: {:.4f} MAE: {:.4f} RMSE: {:.4f}'.format(TestLoss, MAE, RMSE))
+
+	# if EXTRA:
+	# 	save_model(model-books-books, './model-books-books-1m/')
+	# else:
+	loss_r_val_sum, l1_sum, l2_sum = 0., 0., 0.
+	for i in range(val_size // BATCH_SIZE_TEST + 1):
+		loss_r_val, l1, l2 = test(model, val_set, i)
+		loss_r_val_sum += loss_r_val
+		l1_sum += l1
+		l2_sum += l2
+	ValLoss = loss_r_val_sum / val_size
+	MAE = l1_sum / val_size
+	RMSE = np.sqrt( l2_sum / val_size )
+	print('ValLoss: {:.4f} MAE: {:.4f} RMSE: {:.4f}'.format(ValLoss, MAE, RMSE))
+	if RMSE < bestRMSE:
+		bestRMSE = RMSE
+		save_model(model, './train-1m/')
