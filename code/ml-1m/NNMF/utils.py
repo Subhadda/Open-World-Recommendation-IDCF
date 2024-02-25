@@ -5,4 +5,4 @@ import numpy as np
 
 random.seed(1234)
 
-config = yaml
+config = yaml.safe_load(open("./datainfo.yaml", 'r')
