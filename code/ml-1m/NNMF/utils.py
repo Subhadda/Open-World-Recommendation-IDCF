@@ -19,4 +19,6 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1):
         train_r = pickle.load(f)
         test_u = pickle.load(f)
         test_i = pickle.load(f)
-        tes
+        test_r = pickle.load(f)
+
+    index = [i for i in range
