@@ -23,4 +23,4 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1):
 
     index = [i for i in range(len(u))]
     random.shuffle(index)
-    train_index, test_ind
+    train_index, test_index = index[:int(0.9*training_ratio*len(u))], index[int(0.9*len
