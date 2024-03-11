@@ -32,4 +32,6 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1):
     test_ur_dic = {}
 
     for user in range(n_user):
-        train_ui_dic[user] = 
+        train_ui_dic[user] = []
+        train_ur_dic[user] = []
+        test_ui_dic[user] = 
