@@ -50,4 +50,5 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1):
     train_set_que, test_set_que = [], []
 
     for u in train_ui_dic.keys():
-        num =
+        num = len(train_ui_dic[u])
+        if num >= thres
