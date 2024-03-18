@@ -59,4 +59,5 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1):
                 test_set_supp.append([u, i, test_ur_dic[u][index]])
             user_supp_num += 1
         else:
-            for index, i in enumerate(train_ui_di
+            for index, i in enumerate(train_ui_dic[u]):
+                train_set_que.append([u, i, train
