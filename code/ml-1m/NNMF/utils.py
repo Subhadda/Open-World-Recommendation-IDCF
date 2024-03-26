@@ -70,4 +70,5 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1):
     for u in train_ui_dic.keys():
         user_his_dic[u] = train_ui_dic[u]
 
-    print("-------Dat
+    print("-------Dataset Info--------")
+    print("split way [all] with training_ratio {}".
