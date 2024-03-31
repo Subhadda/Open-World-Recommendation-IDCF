@@ -74,4 +74,6 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1):
     print("split way [all] with training_ratio {}".format(training_ratio))
     print("support user {}, query user {}".format(user_supp_num, user_que_num))
     print("train set size: support/query {}/{}".format(len(train_set_supp), len(train_set_que)))
-    print("test set size: support/query {}/{}".for
+    print("test set size: support/query {}/{}".format(len(test_set_supp), len(test_set_que)))
+
+    
