@@ -80,4 +80,6 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1):
 
 def dcg_k(score_label, k):
     dcg, i = 0., 0
-    for s in 
+    for s in score_label:
+        if i < k:
+            dcg += (2**s[1]-1) / np.log2
