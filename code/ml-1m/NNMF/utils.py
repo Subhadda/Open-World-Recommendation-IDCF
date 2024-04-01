@@ -76,4 +76,8 @@ def generate_data(datadir, dataset='ml-1m', threshold=30, training_ratio=1):
     print("train set size: support/query {}/{}".format(len(train_set_supp), len(train_set_que)))
     print("test set size: support/query {}/{}".format(len(test_set_supp), len(test_set_que)))
 
-    return train_set_supp, train_set_que, test_set_supp, test_set_que, user_h
+    return train_set_supp, train_set_que, test_set_supp, test_set_que, user_his_dic
+
+def dcg_k(score_label, k):
+    dcg, i = 0., 0
+    for s in 
