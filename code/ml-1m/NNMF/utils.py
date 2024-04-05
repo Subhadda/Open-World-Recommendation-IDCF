@@ -88,4 +88,5 @@ def dcg_k(score_label, k):
 
 def ndcg_k(y_hat, y, k):
     score_label = np.stack([y_hat, y], axis=1).tolist()
-    score_label = so
+    score_label = sorted(score_label, key=lambda d:d[0], reverse=True)
+    score_label_ = s
