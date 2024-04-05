@@ -90,4 +90,7 @@ def ndcg_k(y_hat, y, k):
     score_label = np.stack([y_hat, y], axis=1).tolist()
     score_label = sorted(score_label, key=lambda d:d[0], reverse=True)
     score_label_ = sorted(score_label, key=lambda d:d[1], reverse=True)
-    n
+    norm, i = 0., 0
+    for s in score_label_:
+        if i < k:
+    
